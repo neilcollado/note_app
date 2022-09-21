@@ -7,6 +7,22 @@
 import './bootstrap';
 import { createApp } from 'vue';
 import App from './common.js';
+
+//MDB
+import '../assets/css/mdb.min.css'
+import '../assets/js/mdb.min.js'
+//MDB Cards
+
+import '../assets/css/addons-pro/cards-extended.min.css'
+import '../assets/js/addons-pro/cards-extended.min.js'
+
+//MDB Datatables
+import '../assets/css/addons/datatables.min.css'
+import '../assets/js/addons/datatables.min.js'
+
+//Jquery
+import '../assets/js/jquery.min.js'
+
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
