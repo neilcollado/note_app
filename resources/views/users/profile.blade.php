@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+@include('partials.alerts')
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-4">
@@ -14,6 +14,7 @@
           <p class="card-text"><strong>Name:</strong> {{ $user->name }}</p>
           <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
           <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Edit</a>
+          <a href="{{ route('users.security', $user->id) }}" class="btn btn-warning">Security</a>
         </div>
       </div>
     </div>

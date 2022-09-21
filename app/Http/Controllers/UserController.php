@@ -99,8 +99,33 @@ class UserController extends Controller
         }
         $user->save();
 
-        // $request->session()->flash('success', 'Updated Successfully');
+        $request->session()->flash('success', 'Updated Successfully');
         return redirect(route('users.profile'));
+    }
+
+    public function updateSecurity(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $oldPass = request('old_password');
+        
+        if(Hash::check($oldPass, $user->password)) {
+            $newPass = request('new-password');
+            $confirmPass = request('password_confirmation');
+            if(strcmp($newPass, $confirmPass) == 0){
+                $newPass = Hash::make($newPass);
+                $user->password = $newPass;
+                $user->save();
+                $request->session()->flash('success', 'Password Updated');
+                return redirect(route('users.profile'));
+            } else {
+                $request->session()->flash('failed', 'Password Does not Match');
+                return redirect(route('users.security',$id));
+            }
+        } else {
+            $request->session()->flash('failed', 'Wrong Password');
+            return redirect(route('users.security',$id));
+        }
+        
     }
 
     /**
@@ -114,13 +139,19 @@ class UserController extends Controller
         //
     }
 
-    
     public function profile()
     {
         $userID = Auth::id();
         $user = User::findOrFail($userID);
 
         return view('users.profile')
+        ->with('user', $user);
+    }
+
+    public function security($id) {
+        $user = User::findOrFail($id);
+
+        return view('users.editSecurity')
         ->with('user', $user);
     }
 }  

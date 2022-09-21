@@ -22,7 +22,9 @@ Auth::routes();
 Route::middleware('auth')->group(function(){
   //extra methods for users
   Route::get('users/profile', [UserController::class, 'profile'])->name('users.profile');
-  
+  Route::get('users/{id}/security', [UserController::class, 'security'])->name('users.security');
+  Route::patch('users/updateSecurity/{id}', [UserController::class, 'updateSecurity'])->name('users.updateSecurity');
+
   //extra methods for task bulk
   Route::post('task/destory/bulk',[taskController::class,'bulkDestroy'])->name('task.destroy.bulk');
   Route::post('task/edit/bulk',[taskController::class,'bulkEdit'])->name('task.edit.bulk');
