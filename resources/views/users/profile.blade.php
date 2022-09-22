@@ -14,7 +14,7 @@
           <p class="card-text"><strong>Name:</strong> {{ $user->name }}</p>
           <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
           <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Edit</a>
-          <a href="{{ route('users.security', $user->id) }}" class="btn btn-warning">Security</a>
+          <a href="{{ route('users.security') }}" class="btn btn-warning">Security</a>
         </div>
       </div>
     </div>

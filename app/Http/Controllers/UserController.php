@@ -9,6 +9,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Validator;
 use Auth;
 
 class UserController extends Controller
@@ -103,31 +104,6 @@ class UserController extends Controller
         return redirect(route('users.profile'));
     }
 
-    public function updateSecurity(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
-        $oldPass = request('old_password');
-        
-        if(Hash::check($oldPass, $user->password)) {
-            $newPass = request('new-password');
-            $confirmPass = request('password_confirmation');
-            if(strcmp($newPass, $confirmPass) == 0){
-                $newPass = Hash::make($newPass);
-                $user->password = $newPass;
-                $user->save();
-                $request->session()->flash('success', 'Password Updated');
-                return redirect(route('users.profile'));
-            } else {
-                $request->session()->flash('failed', 'Password Does not Match');
-                return redirect(route('users.security',$id));
-            }
-        } else {
-            $request->session()->flash('failed', 'Wrong Password');
-            return redirect(route('users.security',$id));
-        }
-        
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -137,6 +113,28 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function updateSecurity(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $oldPass = request('old_password');
+        
+        if(Hash::check($oldPass, $user->password)) {
+            $newPass = request('password');
+            $request->validate(['password' => 'required|confirmed|min:8']);
+            $confirmPass = request('password_confirmation');
+           
+            $newPass = Hash::make($newPass);
+            $user->password = $newPass;
+            $user->save();
+            $request->session()->flash('success', 'Password Updated');
+            return redirect(route('users.profile'));
+           
+        } else {
+            $request->session()->flash('failed', 'Wrong Password');
+            return redirect(route('users.security',$id));
+        }
     }
 
     public function profile()
@@ -148,8 +146,9 @@ class UserController extends Controller
         ->with('user', $user);
     }
 
-    public function security($id) {
-        $user = User::findOrFail($id);
+    public function security() {
+        $userID = Auth::id();
+        $user = User::findOrFail($userID);
 
         return view('users.editSecurity')
         ->with('user', $user);

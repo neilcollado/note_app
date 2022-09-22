@@ -27,6 +27,7 @@
 		    	<div class="row todoCards">
 
 		    		@foreach ($tasks as $key => $task)
+					<a href="{{ route('task.show', $task->id) }}" style="text-decoration: none; color: black;" >
 					<div class="col-lg-4 col-md-6  ">
 
 						<div class="card shadow mb-4">
@@ -64,6 +65,7 @@
 				  		</div>
 
 					</div>
+					</a>
 		    		@endforeach
 
 				</div>
