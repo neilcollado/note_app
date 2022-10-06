@@ -37,14 +37,18 @@ const App = {
     addItem(){
         $('.itemsContainer').append(`
             <div class="input-group mb-1 item">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <input type="checkbox" aria-label="">
+                <div class="md-form input-group mt-0 mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text md-addon">
+                        <input class="form-check-input" type="checkbox" value="" id="chkbx" >
+                        <label class="form-check-label" for="chkbx">
+                        </label></div>
                     </div>
-                </div>
-                <input type="text" name="items[]" class="form-control form-control-sm" placeholder="Item name" >
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary btn-sm deleteItem--btn" type="button" >Delete</button>
+                    <input type="text" name="items[]" class="form-control form-control-sm" id="items">
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary btn-sm deleteItem--btn"
+                            type="button">Delete</button>
+                    </div>
                 </div>
             </div>
         `);

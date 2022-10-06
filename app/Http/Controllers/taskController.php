@@ -86,7 +86,9 @@ class taskController extends Controller
      */
     public function show($id)
     {
-        //
+        $task = Task::findOrFail($id);
+
+        return view('task.view')->with('task', $task);
     }
 
     /**
