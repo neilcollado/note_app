@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Task ;
+use App\Models\User ;
 use App\Models\Item ;
 
 
@@ -87,8 +88,8 @@ class taskController extends Controller
     public function show($id)
     {
         $task = Task::findOrFail($id);
-
-        return view('task.view')->with('task', $task);
+        $user = User::findOrFail($task->userId);
+        return view('task.view')->with('task', $task)->with('user',$user);
     }
 
     /**
@@ -153,9 +154,11 @@ class taskController extends Controller
         $task->items()->delete();
         $task->delete();
         return response()->json([
-            'message' => 'Task deleted successfully'
+            'message' => 'Task deleted successfully',
+            
         ]);
     }
+
 
     public function bulkDestroy(Request $request)
     {
