@@ -16,7 +16,7 @@
 </div>
 <div class="mdb-page-content page-intro">
 	<div class="px-3 py-5">
-		<div class="container">
+		<div class="container" style="margin-left: 0%;">
 			<div class="row justify-content-center">
 				{{-- Card Header --}}
 				<div class="card-header">

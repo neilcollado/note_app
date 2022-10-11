@@ -3,19 +3,21 @@
 @section('content')
 
 <div class="mdb-page-content page-intro">
-    <div class="text-center px-3 py-5">
-        <!-- Toggler -->
+    <!-- Toggler -->
+    <div class="bg-white text-center">
         <button
             id="toggler"
                 data-mdb-toggle="sidenav"
                 data-mdb-target="#sidenav-1"
-                class="btn btn-dark mt-5 mb-5"
+                class="btn bg-transparent shadow-0 pt-3 pb-3"
                 aria-controls="#sidenav-1"
                 aria-haspopup="true"
             >
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-bars fa-5x"></i>
         </button>
-        <!-- Toggler -->
+    </div>
+    <!-- Toggler -->
+    <div class="text-center px-3 py-5">
         <div class="row py-5">
             <div class="col-md-6">
                 <div class="view overlay mb-5"
@@ -32,6 +34,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <p class="h1">
+                                    <i class="fas fa-user-circle"></i>
                                     {{ __('LOGIN') }}
                                 </p>
                             </div>
@@ -43,6 +46,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-outline mb-4">
+                                                <i class="fas fa-envelope trailing"></i>
                                                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" />
                                                 <label class="form-label" for="email">Email address</label>
                                                 @error('email')
@@ -57,11 +61,12 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-outline mb-4">
+                                                <i class="fas fa-key trailing"></i>
                                                 <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
                                                 <label class="form-label" for="password">Password</label>
                                                 @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
                                             </div>

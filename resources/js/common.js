@@ -118,7 +118,7 @@ const App = {
 
     //global functions
 	loader() {
-		return `<div id="loading-test-5 text-center mt-5" width: 100%">
+		return `<div id="loading-test-5" class="text-center mt-3 mb-3" width: 100%">
                     <div class="loading" data-mdb-parent-selector="#loading-test-5">
                         <div class="fas fa-spinner fa-spin fa-2x loading-icon"></div>
                         <span class="loading-text">Loading...</span>
