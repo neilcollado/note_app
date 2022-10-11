@@ -5,18 +5,8 @@
  */
 
 import './bootstrap';
-import { createApp } from 'vue';
+// import { createApp } from 'vue';
 import App from './common.js';
-
-import '../assets/css/mdb.min.css';
-import '../assets/js/mdb.min.js';
-import '../assets/css/addons-pro/cards-extended.min.css';
-import '../assets/js/addons-pro/cards-extended.min.js';
-
-// import '../assets/css/bootstrap.min.css';
-import '../assets/js/bootstrap.min.js';
-
-import '../css/app.css';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -24,10 +14,10 @@ import '../css/app.css';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+// const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+// import ExampleComponent from './components/ExampleComponent.vue';
+// app.component('example-component', ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -47,20 +37,8 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-// SIDE-BAR SCRIPT
-$(document).ready(function() {
-    // SideNav Button Initialization
-    $(".button-collapse").sideNav({
-      slim: true
-    });
-    // SideNav Scrollbar Initialization
-    var sideNavScrollbar = document.querySelector('.custom-scrollbar');
-    var ps = new PerfectScrollbar(sideNavScrollbar);
-  })
-  
+window.App = App;
 
- window.App = App;
- 
- App.init();
+App.init();
 
-app.mount('#app');
+// app.mount('#app');

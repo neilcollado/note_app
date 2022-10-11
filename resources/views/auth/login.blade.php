@@ -1,59 +1,101 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid mt-5">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="view overlay zoom animated zoomIn">
-                <img src="/images/bg2.png" class="img-fluid" alt="">
+
+<div class="mdb-page-content page-intro">
+    <div class="text-center px-3 py-5">
+        <!-- Toggler -->
+        <button
+            id="toggler"
+                data-mdb-toggle="sidenav"
+                data-mdb-target="#sidenav-1"
+                class="btn btn-dark mt-5 mb-5"
+                aria-controls="#sidenav-1"
+                aria-haspopup="true"
+            >
+            <i class="fas fa-bars"></i>
+        </button>
+        <!-- Toggler -->
+        <div class="row py-5">
+            <div class="col-md-6">
+                <div class="view overlay mb-5"
+                    data-mdb-toggle="animation"
+                    data-mdb-animation-reset="true"
+                    data-mdb-animation-start="onHover"
+                    data-mdb-animation="pulse">
+                    <img src="/images/bg2.png" class="img-fluid" style="max-width: 80%;" alt="">
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card mx-xl-5 p-4 purple lighten-5">
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                        <p class="h1 text-center text-body">LOGIN</p>
-                        <div class="md-form form-sm ">
-                            <i class="fas fa-envelope prefix"></i>
-                            <input type="email" id="email" class="form-control form-control-sm validate @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                            <label data-error="wrong" data-success="right" for="email">Your email</label>
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    
-                        <div class="md-form form-sm ">
-                            <i class="fas fa-lock prefix"></i>
-                            <input type="password" id="password" class="form-control form-control-sm validate @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                            <label data-error="wrong" data-success="right" for="password">Your password</label>
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        
-                        <div class="text-center">
-                            <button class="btn btn-secondary waves-effect waves-light">Log in <i class="fas fa-sign-in ml-1"></i></button>
-                        </div>
-                    </form>
-                    
-                    <!--Footer-->
-                    <div class="modal-footer display-footer p-0">
-                        <div class="mx-auto">
-                            <p class="text-center mt-2">Forgot
-                                @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request') }}" class="blue-text">Password?</a>
-                                @endif
-                            </p>
+            <div class="col-md-6">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="card">
+                            <div class="card-header">
+                                <p class="h1">
+                                    {{ __('LOGIN') }}
+                                </p>
+                            </div>
+        
+                            <div class="card-body">
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-outline mb-4">
+                                                <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" />
+                                                <label class="form-label" for="email">Email address</label>
+                                                @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-outline mb-4">
+                                                <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
+                                                <label class="form-label" for="password">Password</label>
+                                                @error('password')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div style="margin-left: 5%; margin-right: 5%;">
+                                        <div class="row mb-4">
+                                            <div class="col">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
+                                                    <label class="form-check-label" for="remember"> Remember me </label>
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col">
+                                                @if (Route::has('password.request'))
+                                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                    {{ __('Forgot Your Password?') }}
+                                                </a>
+                                                @endif
+                                            </div>
+                                        </div>                        
+                                    </div>
+        
+                                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Toggler -->
     </div>
 </div>
 @endsection

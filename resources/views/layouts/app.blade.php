@@ -9,86 +9,75 @@
 
     <title>{{ config('app.name', 'Note App') }}</title>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"/>
     
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
+    <link rel="stylesheet" href="{{asset('mdb/css/mdb.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/js/app.js'])
 </head>
-<body class="fixed-sn">
+<body>
     <div id="app">
-        <a href="#" data-activates="slide-out" class="btn btn-secondary p-3 mt-5 button-collapse"><i
-            class="fas fa-bars"></i></a>
-        <header>
-            <!-- Sidebar navigation -->
-            <div id="slide-out" class="side-nav fixed wide sn-bg-1">
-                <ul class="custom-scrollbar">
-                    <!-- Logo -->
-                    <li>
-                        <div class="logo-wrapper sn-ad-avatar-wrapper">
-                          <a href="{{ url('/') }}"><img src="https://images-platform.99static.com/kn-DqayrqvkIBJ-QxPj3dG-QKog=/423x192:1077x846/500x500/top/smart/99designs-contests-attachments/84/84609/attachment_84609024" class="rounded-circle">
-                            <span class="h3">Note App</span></a>
-                        </div>
-                      </li>
-                    <!--/. Logo -->
+        <div class="container">
+            <!-- Sidenav -->
+            <nav id="sidenav-1" class="sidenav" data-mdb-hidden="false">
+                <a href="#" class="ripple d-flex justify-content-center py-4 mb-3" style="border-bottom: 2px solid #f5f5f5" href="#!" data-mdb-ripple-color="primary">
+                    <img id="MDB-logo" src="/images/logo.png" alt="Note App" draggable="true"/>
+                </a>
+                
+                <ul class="sidenav-menu">
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="sidenav-item">
+                                <a href="{{ route('login') }}" class="sidenav-link"> <i class="fas fa-sign-in-alt" style="padding-right: 15px;"></i>Log in</a>
+                            </li>
+                        @endif
 
-                    <!-- Side navigation links -->
-                    <li>
-                        <ul class="collapsible collapsible-accordion">
-                            @guest
-                                @if (Route::has('login'))
-                                    </li> 
-                                        <a href="{{ route('login') }}" class="waves-effect" style="text-decoration: none"><i class="sv-slim-icon fas fa-sign-in-alt"></i>
-                                            Login
-                                        </a> 
-                                    </li>
-                                @endif
+                        @if (Route::has('register'))
+                            <li class="sidenav-item">
+                                <a href="{{ route('register') }}" class="sidenav-link"> <i class="fas fa-pen-square" style="padding-right: 15px;"></i>Register</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="sidenav-item">
+                            <a href="{{ route('users.profile') }}" class="sidenav-link"> 
+                                <i style="padding-right: 15px;">
+                                    <img src="{{ url('/images/default.png') }}" alt="avatar" class="rounded-circle" style="max-width: 35px;"/>
+                                </i>
+                                {{ Auth::user()->name }}
+                            </a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="/task/create" class="sidenav-link"> <i class="fas fa-plus" style="padding-right: 15px;"></i>Create Task</a>
+                        </li>
+                        <li class="sidenav-item">
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();" 
+                                class="sidenav-link"> 
+                                <i class="fas fa-sign-out-alt" style="padding-right: 15px;"></i>Log out</a>
 
-                                @if (Route::has('register'))
-                                    </li>
-                                        <a href="{{ route('register') }}" class="waves-effect" style="text-decoration: none"><i class="sv-slim-icon fas fa-pen-square"></i>
-                                            Register
-                                        </a>
-                                    </li>
-                                @endif
-                            @else
-                                </li>
-                                    <a href="{{ route('users.profile') }}" class="waves-effect" style="text-decoration: none"><i class="fas fa-user-circle"></i>
-                                        {{ Auth::user()->name }}
-                                    </a>
-                                </li>
-                                </li>
-                                    <a href="/task/create" class="waves-effect" style="text-decoration: none"><i class="fas fa-plus"></i>
-                                        Add task
-                                    </a>
-                                </li>
-                                </li>
-                                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();" class="waves-effect" style="text-decoration: none"><i class="fas fa-sign-out-alt"></i>
-                                        Logout
-                                    </a>
-                                </li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            @endguest
-                            </li> <a id="toggle" class="waves-effect"><i class="sv-slim-icon fas fa-angle-double-left"></i>Minimize menu</a> </li>
-                        </ul>
-                    </li>
-                    <!--/. Side navigation links -->
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                    @endguest
                 </ul>
-                <div class="sidenav-bg rgba-purple-strong lighten-1"></div>
-            </div>
-            <!--/. Sidebar navigation -->
-        </header>
-        <main>
-            <div class="container-fluid">
-                @yield('content')
-            </div>
+            </nav>
+            <!-- Sidenav -->
+        </div>
+
+        <main class="">
+            @yield('content')
         </main>
     </div>
+    <script src="{{asset('mdb/js/mdb.min.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
 </body>
 </html>
