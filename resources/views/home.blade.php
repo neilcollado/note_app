@@ -25,6 +25,7 @@
 							data-url="{{ route('task.destroy.bulk') }}"
 							class="btn btn-sm btn-danger mx-1 float-end deleteRequest--bulk
 							" style="display: none;">
+							<i class="fas fa-trash" ></i>
 							Delete Selected
 						</button>
 							
@@ -32,6 +33,7 @@
 							data-url="{{ route('task.edit.bulk') }}"
 							class="btn btn-sm btn-info mx-1 float-end editRequest--bulk
 							" style="display: none;">
+							<i class="fas fa-marker" ></i>
 							Edit Status / Priority Selected
 						</button>
 					</p>
@@ -54,20 +56,26 @@
 											<label class="form-check-label" for="cp{{ $task->id }}"></label>
 										</div>
 									</div>
-									<a href="{{ route('task.show', $task->id) }}" style="text-decoration: none; color: black;" >
+									
 										<div class="card-body pb-3 pt-3">
 											<h5 class="card-title text-truncate pb-1">{{ $task->name }}</h5>
 											<p class="card-text text-primary text-truncate" style="font-family:Arial, Helvetica, sans-serif">
 												<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
 											</p>
 										</div>
-									</a>
+									
 									<div class="card-footer bg-transparent border-secondary">
-										<button data-url="{{ route('task.destroy',$task->id) }}" class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
-											<i class="fas fa-trash"></i>
+										<button 
+											data-url="{{ route('task.destroy',$task->id) }}" 
+											class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
+											<i class="fas fa-trash" ></i>
 										</button>
+										
 										<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating" role="button" aria-pressed="true">
 											<i class="fas fa-marker"></i>
+										</a>
+										<a href="{{ route('task.show', $task->id) }}" class="btn btn-sm btn-success btn-floating" role="button" aria-pressed="true">
+											<i class="fas fa-eye"></i>
 										</a>
 									</div>
 								</div>
@@ -81,4 +89,5 @@
 </div>
 	
 @include('task.modals.edit-bulk')
+@include('task.modals.delete-task')
 @endsection
