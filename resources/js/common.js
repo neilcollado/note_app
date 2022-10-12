@@ -118,7 +118,7 @@ const App = {
 
     //global functions
 	loader() {
-		return `<div id="loading-test-5 text-center mt-5" width: 100%">
+		return `<div id="loading-test-5" class="text-center mt-3 mb-3" width: 100%">
                     <div class="loading" data-mdb-parent-selector="#loading-test-5">
                         <div class="fas fa-spinner fa-spin fa-2x loading-icon"></div>
                         <span class="loading-text">Loading...</span>
@@ -159,8 +159,21 @@ const App = {
                 location.reload();
             }).catch((error) => {
                 console.error(error);
-                // alert("Error in deleting contact support");
-                mdb.Alert.getInstance(document.getElementById('placement-example')).show();
+                alert("Error in deleting contact support");
+                // mdb.Alert.getInstance(document.getElementById('placement-example')).show();
+                /*  MDB ALERT
+                    <div
+                        class="alert fade mt-3 alert-dismissible"
+                        id="placement-example"
+                        data-mdb-position="top-center"
+                        data-mdb-hidden="true"
+                        role="alert"
+                        data-mdb-color="danger"
+                        >
+                        <strong>Oops!</strong> Error in deleting contact support
+                        <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                */
             });
         }
     },

@@ -47,3 +47,24 @@ nput[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
 }
+
+.gradient-custom-outer {
+    width: 100%;
+    height: 50vh;
+    background: #667eea;
+    /* background: -webkit-linear-gradient(to right, rgba(102, 126, 234), rgba(118, 75, 162)); */
+    background: linear-gradient(to right, rgba(102, 126, 234), rgba(118, 75, 162));
+}
+
+.gradient-custom-inner {
+    margin: auto;
+    margin-top: -22%;
+    padding: 10px;
+    width: 150vh;
+    height: 50vh;
+    background: #f093fb;
+    /* background: -webkit-linear-gradient(to right, rgba(196, 113, 245), rgba(250, 113, 205)); */
+    /* background: linear-gradient(to right, rgba(196, 113, 245), rgba(250, 113, 205)); */
+    background: linear-gradient(to right, rgba(240, 147, 251), rgba(245, 87, 108));
+}
+

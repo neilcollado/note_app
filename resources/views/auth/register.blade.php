@@ -31,6 +31,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <p class="h1">
+                                    <i class="fas fa-file-signature"></i>
                                     {{ __('REGISTER') }}
                                 </p>
                             </div>
@@ -42,6 +43,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-outline mb-4">
+                                                <i class="fas fa-user-tag trailing"></i>
                                                 <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" />
                                                 <label class="form-label" for="name">Name</label>
                                                 @error('name')
@@ -56,10 +58,11 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-outline mb-4">
+                                                <i class="fas fa-envelope trailing"></i>
                                                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" />
                                                 <label class="form-label" for="email">Email Address</label>
                                                 @error('email')
-                                                    <span class="invalid-feedback" role="alert">
+                                                <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
@@ -70,6 +73,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-outline mb-4">
+                                                <i class="fas fa-unlock trailing"></i>
                                                 <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" />
                                                 <label class="form-label" for="password">New Password</label>
                                                 @error('password')
@@ -84,6 +88,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-outline mb-4">
+                                                <i class="fas fa-unlock-alt trailing"></i>
                                                 <input type="password" id="password-confirm" class="form-control" name="password_confirmation" required autocomplete="new-password" />
                                                 <label class="form-label" for="password-confirm">Re-enter Password</label>
                                             </div>

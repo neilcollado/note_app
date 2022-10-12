@@ -1,22 +1,9 @@
 @extends('layouts.app')
-@extends('layouts.navbar')
-
 
 @section('content')
-<div
-	class="alert fade mt-3 alert-dismissible"
-	id="placement-example"
-	data-mdb-position="top-center"
-	data-mdb-hidden="true"
-	role="alert"
-	data-mdb-color="danger"
-	>
-	<strong>Oops!</strong> Error in deleting contact support
-	<button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
-</div>
 <div class="mdb-page-content page-intro">
 	<div class="px-3 py-5">
-		<div class="container">
+		<div class="container" style="margin-left: 0%;">
 			<div class="row justify-content-center">
 				{{-- Card Header --}}
 				<div class="card-header">
@@ -66,14 +53,14 @@
 									
 									<div class="card-footer bg-transparent border-secondary">
 										<button 
-											data-url="{{ route('task.destroy',$task->id) }}" 
 											class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
-											<i class="fas fa-trash" ></i>
+											<i class="fas fa-trash" data-url="{{ route('task.destroy',$task->id) }}" ></i>
 										</button>
-										
+
 										<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating" role="button" aria-pressed="true">
 											<i class="fas fa-marker"></i>
 										</a>
+
 										<a href="{{ route('task.show', $task->id) }}" class="btn btn-sm btn-success btn-floating" role="button" aria-pressed="true">
 											<i class="fas fa-eye"></i>
 										</a>
@@ -89,5 +76,4 @@
 </div>
 	
 @include('task.modals.edit-bulk')
-@include('task.modals.delete-task')
 @endsection

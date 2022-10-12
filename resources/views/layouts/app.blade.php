@@ -48,7 +48,7 @@
                         <li class="sidenav-item">
                             <a href="{{ route('users.profile') }}" class="sidenav-link"> 
                                 <i style="padding-right: 15px;">
-                                    <img src="{{ url('/images/default.png') }}" alt="avatar" class="rounded-circle" style="max-width: 35px;"/>
+                                    <img src="{{ url('/uploads/users/default.png') }}" alt="avatar" class="rounded-circle" style="max-width: 35px;"/>
                                 </i>
                                 {{ Auth::user()->name }}
                             </a>
@@ -67,11 +67,14 @@
                                 @csrf
                             </form>
                         </li>
-                    @endguest
-                </ul>
-            </nav>
-            <!-- Sidenav -->
-        </div>
+                    </ul>
+                </nav>
+                <!-- Sidenav -->
+
+                {{-- Navbar --}}
+                @include('layouts.navbar')
+                @endguest
+            </div>
 
         <main class="">
             @yield('content')
