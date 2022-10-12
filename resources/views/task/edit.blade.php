@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@extends('layouts.navbar')
 
 @section('content')
 <div class="mdb-page-content page-intro">

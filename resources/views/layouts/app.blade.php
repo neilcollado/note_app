@@ -67,11 +67,14 @@
                                 @csrf
                             </form>
                         </li>
-                    @endguest
-                </ul>
-            </nav>
-            <!-- Sidenav -->
-        </div>
+                    </ul>
+                </nav>
+                <!-- Sidenav -->
+
+                {{-- Navbar --}}
+                @include('layouts.navbar')
+                @endguest
+            </div>
 
         <main class="">
             @yield('content')

@@ -1,19 +1,6 @@
 @extends('layouts.app')
-@extends('layouts.navbar')
-
 
 @section('content')
-<div
-	class="alert fade mt-3 alert-dismissible"
-	id="placement-example"
-	data-mdb-position="top-center"
-	data-mdb-hidden="true"
-	role="alert"
-	data-mdb-color="danger"
-	>
-	<strong>Oops!</strong> Error in deleting contact support
-	<button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
-</div>
 <div class="mdb-page-content page-intro">
 	<div class="px-3 py-5">
 		<div class="container" style="margin-left: 0%;">
