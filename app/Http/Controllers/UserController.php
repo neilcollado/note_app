@@ -104,6 +104,7 @@ class UserController extends Controller
 
         //update user
         User::where('id', Auth::id())->update($validated);
+        $request->session()->flash('success', 'Updated Successfully');
         return redirect(route('users.profile'));
     }
 
@@ -120,24 +121,22 @@ class UserController extends Controller
     
     public function updateSecurity(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $oldPass = request('old_password');
+        //validate request
+        $validated = $request->validate([
+            'old_password' => ['required', function ($attribute, $value, $fail) {
+                if(!Hash::check($value, Auth::user()->password)) {
+                    $fail('Old Password didn\'t match');
+                }
+            }],
+            'password' => 'required|min:8|string|different:old_password|confirmed',
+        ]);
         
-        if(Hash::check($oldPass, $user->password)) {
-            $newPass = request('password');
-            $request->validate(['password' => 'required|confirmed|min:8']);
-            $confirmPass = request('password_confirmation');
-           
-            $newPass = Hash::make($newPass);
-            $user->password = $newPass;
-            $user->save();
-            $request->session()->flash('success', 'Password Updated');
-            return redirect(route('users.profile'));
-           
-        } else {
-            $request->session()->flash('failed', 'Wrong Password');
-            return redirect(route('users.security',$id));
-        }
+        $user = User::findOrFail($id);
+        $user->password = Hash::make($validated['password']);
+        $user->save();
+
+        $request->session()->flash('success', 'Updated Successfully');
+        return redirect(route('users.profile'));
     }
 
     public function profile()

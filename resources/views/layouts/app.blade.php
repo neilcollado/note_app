@@ -48,7 +48,11 @@
                         <li class="sidenav-item">
                             <a href="{{ route('users.profile') }}" class="sidenav-link"> 
                                 <i style="padding-right: 15px;">
-                                    <img src="{{ asset('uploads/users/' . Auth::user()->profile_picture) }}" alt="avatar"  class="rounded-circle img-fluid" style="width:48px; height:48px; object-fit:cover"/>
+                                    @if(isset(Auth::user()->profile_picture))
+                                        <img src="{{ asset('uploads/users/' . Auth::user()->profile_picture) }}" alt="avatar"  class="rounded-circle img-fluid" style="width:48px; height:48px; object-fit:cover"/>
+                                    @else
+                                        <img src="{{ asset('/uploads/users/default.png') }}" alt="profile_picture" class="rounded-circle img-fluid" style="width:48px; height:48px; object-fit:cover"/>
+                                    @endif
                                 </i>
                                 {{ Auth::user()->name }}
                             </a>

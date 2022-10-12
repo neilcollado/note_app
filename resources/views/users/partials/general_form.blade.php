@@ -57,16 +57,19 @@
                     <div class="col-md-3">
                     <div class="form-group row">
                         {{-- Product picture --}}
-                        <label for="profile_picture" class="col-md-4 col-form-label text-md-right" ></label>
-                        @isset($user)
+                        <label for="profile_picture" class="col-md-4 col-form-label text-md-right" ></label> 
                         <div class="img-box">
-                            <img src="{{ asset('uploads/users/' . $user->profile_picture) }}" alt="profile image" 
-                            class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit:cover" style="max-width: 40vh">
+                        @if(isset($user->profile_picture))
+                            <img src="{{ asset('uploads/users/' . $user->profile_picture) }}" alt="profile picture"
+                            class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit:cover"">
+                        @else
+                            <img src="{{ asset('/uploads/users/default.png') }}" alt="profile_picture" 
+                            class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit:cover"">
+                        @endif
                         </div>
-                        @endisset
-
+                        
                         <div class="col-md-12 col-form-label">
-                            <input id="profile_picture" type="file" class="btn btn-sm @error('profile_picture') is-invalid @enderror" 
+                            <input id="profile_picture" type="file" class=" btn-sm @error('profile_picture') is-invalid @enderror" 
                             name="profile_picture">
                             @error('profile_picture')
                                 <span class="invalid-feedback" role="alert">

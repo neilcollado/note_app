@@ -8,8 +8,14 @@
         <div class="col-lg-6">
           <div class="card mb-4">
             <div class="card-body text-center">
-              <img src="{{ asset('uploads/users/' . $user->profile_picture) }}" alt="profile picture"
+              @if(isset($user->profile_picture))
+                <img src="{{ asset('uploads/users/' . $user->profile_picture) }}" alt="profile picture"
                 class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit:cover">
+              @else
+                <img src="{{ asset('/uploads/users/default.png') }}" alt="profile_picture" 
+                class="rounded-circle img-fluid" style="width:48px; height:48px; object-fit:cover"/>
+              @endif
+              
                 <p class="text-muted mb-1">Employee</p>
                 <div class="d-flex justify-content-center mb-2">
                   <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">General Settings</a>
