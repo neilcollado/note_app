@@ -10,7 +10,7 @@
             <div class="card-body text-center">
               @if(isset($user->profile_picture))
                 <img src="{{ asset('uploads/users/' . $user->profile_picture) }}" alt="profile picture"
-                class="rounded-circle img-fluid" style="max-width: 150px; object-fit:cover">
+                class="rounded-circle img-fluid" style="width:150px; height:150px; object-fit:cover">
               @else
                 <img src="{{ asset('/uploads/users/default.png') }}" alt="profile_picture" 
                 class="rounded-circle img-fluid" style="max-width: 150px; object-fit:cover"/>
