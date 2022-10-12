@@ -29,6 +29,6 @@ class HomeController extends Controller
     {
         $id = auth()->user()->id;
         $tasks = Task::where('userId',$id)->orderBy('priority','asc')->get();
-        return view('home',compact('tasks'));
+        return view('home',compact('tasks'))->with('user', Auth::user());
     }
 }
