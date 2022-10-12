@@ -36,15 +36,15 @@ const App = {
 
     addItem(){
         $('.itemsContainer').append(`
-            <div class="input-group mb-1 item">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <input type="checkbox" aria-label="">
+            <div class="input-group item">
+                <div class="md-form input-group mt-0 mb-3">
+                    <div class="input-group-text border-0">
+                        <input class="form-check-input mt-0" type="checkbox" value="" id="chkbx" />
                     </div>
-                </div>
-                <input type="text" name="items[]" class="form-control form-control-sm" placeholder="Item name" >
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary btn-sm deleteItem--btn" type="button" >Delete</button>
+                    <input type="text" name="items[]" id="items" placeholder="New Task" aria-label="New Task" class="form-control rounded-start"/>
+                    <button class="btn btn-secondary deleteItem--btn" type="button">
+                        Delete
+                    </button>
                 </div>
             </div>
         `);
@@ -70,7 +70,8 @@ const App = {
             location.reload();
         }).catch((error) => {
             console.error(error);
-            alert("Error in deleting contact support");
+            // alert("Error in deleting contact support");
+            mdb.Alert.getInstance(document.getElementById('placement-example')).show();
         });
     },
 
@@ -117,7 +118,13 @@ const App = {
 
     //global functions
 	loader() {
-		return '<div class="text-center">  Loading..</div>';
+		return `<div id="loading-test-5" class="text-center mt-3 mb-3" width: 100%">
+                    <div class="loading" data-mdb-parent-selector="#loading-test-5">
+                        <div class="fas fa-spinner fa-spin fa-2x loading-icon"></div>
+                        <span class="loading-text">Loading...</span>
+                    </div>
+                </div>`;
+        
     },
 
     submitAppForm() {
@@ -153,6 +160,20 @@ const App = {
             }).catch((error) => {
                 console.error(error);
                 alert("Error in deleting contact support");
+                // mdb.Alert.getInstance(document.getElementById('placement-example')).show();
+                /*  MDB ALERT
+                    <div
+                        class="alert fade mt-3 alert-dismissible"
+                        id="placement-example"
+                        data-mdb-position="top-center"
+                        data-mdb-hidden="true"
+                        role="alert"
+                        data-mdb-color="danger"
+                        >
+                        <strong>Oops!</strong> Error in deleting contact support
+                        <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                */
             });
         }
     },

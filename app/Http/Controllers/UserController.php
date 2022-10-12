@@ -85,22 +85,25 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        $user->name = request('name');
-        $user->email = request('email');
+        //validate request
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . Auth::id()],
+            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         
-        if($request->hasFile('profilePicture')) {
-            $file = $request->file('profilePicture');
+        //validate image file
+        if($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
             $extension = $file->getClientOriginalExtension();
             $filename = time().'.'.$extension;
             $file->move('uploads/users', $filename);
-            $user->profilePicture = $filename;
-        } else {
-            $user->profilePicture =  $user->profilePicture;
+            $validated['profile_picture'] = $filename;
         }
-        $user->save();
 
-        $request->session()->flash('success', 'Updated Successfully');
+        //update user
+        User::where('id', Auth::id())->update($validated);
         return redirect(route('users.profile'));
     }
 
@@ -139,18 +142,13 @@ class UserController extends Controller
 
     public function profile()
     {
-        $userID = Auth::id();
-        $user = User::findOrFail($userID);
-
         return view('users.profile')
-        ->with('user', $user);
+        ->with('user', Auth::user());
     }
 
-    public function security() {
-        $userID = Auth::id();
-        $user = User::findOrFail($userID);
-
+    public function security() 
+    {
         return view('users.editSecurity')
-        ->with('user', $user);
+        ->with('user', Auth::user());
     }
 }  

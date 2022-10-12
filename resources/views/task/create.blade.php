@@ -1,72 +1,98 @@
- @extends('layouts.app')
- @section('content')
+@extends('layouts.app')
 
- <div class="container my-4">
-     <div class="card">
-         <div class="card-header">
-             <div class="class">
-                 Add Task
-                 <a href="{{ url()->previous() }}" class="btn btn-sm btn-success float-end">Back</a>
-             </div>
-         </div>
-         <div class="card-body">
-             <form method="POST" class="appForm" action="{{ route('task.store') }}">
-                 @csrf
-                 <div class="row">
+@section('content')
 
-                     <div class="col-12 form-group">
-                         <label>Task Name:</label>
-                         <input type="text" name="name" class="form-control form-control-sm" />
+<div class="mdb-page-content page-intro">
+    <div class="px-3 py-5">
+        <div class="container row justify-content-center py-5">
+            <div class="card col-md-8">
+                <div class="m-3">
+                    <p class="h2">
+                        Create a Task
+                        <a href="{{ url('/') }}" class="btn btn-success float-end">Back</a>
+                    </p>
+                </div>
+                <div class="card-body">
+                    <form method="POST" class="appForm" action="{{ route('task.store') }}">
+                        @csrf
+                        <div class="row">
+        
+                            <div class="col-12 form-group">
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="name" name="name" class="form-control form-control-sm"/>
+                                    <label class="form-label" for="name">Task Name</label>
+                                </div>
+                            </div>
 
-                     </div>
-                     <div class="col-md-6 form-group">
-                         <label>Due Date:</label>
-                         <input type="date" class="form-control form-control-sm" name="due_date"
-                             value="{{ date('Y-m-d') }}" />
-                     </div>
-                     <div class="col-md-6 form-group">
-                         <label>Status:</label>
-                         <input type="text" class="form-control form-control-sm" name="status" />
-                     </div>
-                     <div class="col-md-6 form-group">
-                         <label>Priority:</label>
-                         <input type="number" min="1" class="form-control form-control-sm" name="priority" value="1" />
-                     </div>
+                            <div class="col-md-6 form-group">
+                                <div class="form-outline datepicker-disable-past mb-4">
+                                    <input type="date" class="form-control form-control-sm" id="due_date" name="due_date" value="{{ date('Y-m-d') }}"/>
+                                    <label for="due_date" class="form-label">Select a date</label>
+                                </div>
+                            </div>
 
-                     <div class="col-12 form-group ">
-                         Sub Tasks:
-                     </div>
 
-                     <div class="col-12 itemsContainer">
-                         <div class="input-group mb-1 item">
-                             <div class="input-group-prepend">
-                                 <div class="input-group-text">
-                                     <input type="checkbox" aria-label="">
-                                 </div>
-                             </div>
-                             <input type="text" name="items[]" class="form-control form-control-sm"
-                                 placeholder="Item name">
-                             <div class="input-group-append">
-                                 <button class="btn btn-outline-secondary btn-sm deleteItem--btn"
-                                     type="button">Delete</button>
-                             </div>
-                         </div>
-                     </div>
+                            <div class="col-md-6 form-group">
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="status" name="status" class="form-control form-control-sm"/>
+                                    <label class="form-label" for="status">Status</label>
+                                </div>
+                            </div>
 
-                     <div class="col-12 m-1">
-                         <button class="btn btn-outline-success btn-sm addItem--btn" id="addItem--btn" type="button">Add
-                             Item</button>
-                         <button class="btn btn-outline-danger btn-sm removeSelected--btn" type="button"
-                             style="display: none;">Remove Selected</button>
-                     </div>
+                            <div class="col-md-12 form-group">
+                                <label class="form-label" for="priority">Priority</label>
+                                <div class="range">
+                                    <input type="range" class="form-range" min="1" max="10" value="1" id="priority" name="priority" />
+                                </div>
+                            </div>
+        
+                            <div class="col-12 form-group text-center mt-4 mb-3">
+                                <p class="h5">
+                                    <i class="fas fa-tasks"></i> Sub Tasks
+                                </p>
+                            </div>
+        
+                            <div class="col-12 itemsContainer">
+                                
+                                <div class="input-group item">
+                                    <div class="md-form input-group mt-0 mb-3">
+                                        <div class="input-group-text border-0">
+                                            <input class="form-check-input mt-0" type="checkbox" id="chkbx" />
+                                        </div>
+                                        <input type="text" name="items[]" id="items" placeholder="New Task" aria-label="New Task" class="form-control rounded-start"/>
+                                        <button class="btn btn-secondary deleteItem--btn" type="button">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
 
-                 </div>
-                 <div class="appForm--response my-2"></div>
+                            </div>
+        
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-sm mb-2">
+                                        <button class="btn btn-block btn-outline-success btn-sm addItem--btn" id="addItem--btn" type="button">
+                                            Add Item
+                                        </button>
+                                    </div>
+                                    <div class="col-sm mb-2">
+                                        <button class="btn btn-block btn-outline-danger btn-sm removeSelected--btn" type="button" style="display: none;">
+                                            Remove Selected
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+                        <div class="appForm--response my-2"></div>
+        
+                        <button class="btn btn-success btn-block">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                 <button class="btn btn-success btn-sm float-end ">Create</button>
-             </form>
-         </div>
-     </div>
- </div>
 
- @endsection
+@endsection

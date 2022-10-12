@@ -19,7 +19,7 @@
     @isset($user)
     <div class="img-box">
         <img src="{{ asset('uploads/users/' . $user->profilePicture) }}" alt="profile image" 
-        class="img-thumbnail" style="max-width: 40vh">
+        class="img-thumbnail rounded-circle" style="max-width: 40vh">
     </div>
     @endisset
 

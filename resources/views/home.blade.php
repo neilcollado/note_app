@@ -1,80 +1,70 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-    <div class="container-fluid my-4" >
-		<div class="card shadow" style="min-height:90vh ">
-			<div class="card-header">
-				Task List
-				<a href="/task/create" class="btn btn-sm btn-success float-end">Add</a>
-				<button 
-					data-url="{{ route('task.destroy.bulk') }}"
-					class="btn btn-sm btn-danger mx-1 float-end deleteRequest--bulk
-					" style="display: none;">Delete Selected</button>
-					<button 
-					data-url="{{ route('task.edit.bulk') }}"
-					class="btn btn-sm btn-outline-info mx-1 float-end editRequest--bulk
-					" style="display: none;">Edit Status/Priority Selected</button>
-				
-			</div>
-			<div class="card-body ">
-
-				@unless ($tasks->count())
-					<div class="alert alert-danger">No data found in system</div>
-				@endunless
-
-		    	<div class="row todoCards">
-
-		    		@foreach ($tasks as $key => $task)
-					<a href="{{ route('task.show', $task->id) }}" style="text-decoration: none; color: black;" >
-					<div class="col-lg-4 col-md-6  ">
-
-						<div class="card shadow mb-4">
-				  			<div class="card-header">
-				  				{{ $task->name }}
-
-								<span class="badge float-end rounded-0 text-dark">{{ $task->status }}</span>
-				  				<span class="badge float-end rounded-0 text-info mx-1">{{ $task->priority }}</span>
-				  				
-				  			</div>
-					  		<div class="card-body">
-			  					<table class="table  text-muted table-sm table-borderless">
-			  						<tr><td>Time Left: </td> <td>{{ $task->due_date->diffForHumans() }}</td><tr>
-			  						<tr><td>Due Date: </td> <td>{{ $task->due_date->format('Y-m-d') }}</td><tr>
-			  						<tr><td>Created at: </td> <td>{{ $task->created_at }}</td><tr>
-			  						<tr><td>Updated at: </td> <td>{{ $task->updated_at }}</td><tr>
-			  					</table>
-
-					  		</div>
-					  		<div class="card-footer p-1">
-					  			<span class="border px-2 py-1 text-muted">
-					  				<input type="checkbox" id="cp{{ $task->id }}" value="{{ $task->id }}" class="mx-2">
-					  			<label for="cp{{ $task->id }}">Select</label>
-					  			</span>
-					  			<button
-						  				data-url="{{ route('task.destroy',$task->id) }}"
-						  				class="btn btn-sm deleteRequest--btn btn-outline-danger mx-1 float-right "
-						  			>Delete</button>
-
-						  			<a
-						  				href="{{ route('task.edit',$task->id) }}"
-						  				class="btn btn-sm btn-outline-info float-right"
-						  			>Edit</a>
-					  		</div>
-				  		</div>
-
-					</div>
-					</a>
-		    		@endforeach
-
+<div class="mdb-page-content page-intro">
+	<div class="px-3 py-5">
+		<div class="container" style="margin-left: 0%;">
+			<div class="row justify-content-center">
+				{{-- Card Header --}}
+				<div class="card-header">
+					<p class="h2 pt-4 header-custom">Your Tasks
+						<button 
+							data-url="{{ route('task.destroy.bulk') }}"
+							class="btn btn-sm btn-danger mx-1 float-end deleteRequest--bulk
+							" style="display: none;">
+							Delete Selected
+						</button>
+							
+						<button 
+							data-url="{{ route('task.edit.bulk') }}"
+							class="btn btn-sm btn-info mx-1 float-end editRequest--bulk
+							" style="display: none;">
+							Edit Status / Priority Selected
+						</button>
+					</p>
 				</div>
-
+				{{-- Card Body --}}
+				<div class="card-body ">
+		
+					@unless ($tasks->count())
+						<div class="alert alert-danger">No data found in system</div>
+					@endunless
+		
+					<div class="row todoCards">
+						@foreach ($tasks as $key => $task)
+							{{-- Card --}}
+							<div class="col-lg-3 col-md-6">
+								<div class="card border border-secondary shadow-0 mb-3 card-custom" style="max-width: 18rem;">
+									<div class="card-header bg-transparent border-secondary">
+										<div class="form-check">
+											<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}">
+											<label class="form-check-label" for="cp{{ $task->id }}"></label>
+										</div>
+									</div>
+									<a href="{{ route('task.show', $task->id) }}" style="text-decoration: none; color: black;" >
+										<div class="card-body pb-3 pt-3">
+											<h5 class="card-title text-truncate pb-1">{{ $task->name }}</h5>
+											<p class="card-text text-primary text-truncate" style="font-family:Arial, Helvetica, sans-serif">
+												<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
+											</p>
+										</div>
+									</a>
+									<div class="card-footer bg-transparent border-secondary">
+										<button data-url="{{ route('task.destroy',$task->id) }}" class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
+											<i class="fas fa-trash"></i>
+										</button>
+										<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating" role="button" aria-pressed="true">
+											<i class="fas fa-marker"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						@endforeach
+					</div>
+				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
-
-    </div>
 </div>
 	
 @include('task.modals.edit-bulk')
