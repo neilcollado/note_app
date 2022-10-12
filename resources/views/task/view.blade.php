@@ -2,12 +2,6 @@
 
 @section('content')
 
-<<<<<<< HEAD
-  <h1>{{ $task->name }}</h1>
-
-  
-@endsection
-=======
 <div class="mdb-page-content page-intro">
   <div class="gradient-custom-outer shadow-5" data-mdb-toggle="animation" data-mdb-animation-start="onLoad" data-mdb-animation="fade-in-down"></div>
   <div class="gradient-custom-inner shadow-5 rounded-5" data-mdb-toggle="animation" data-mdb-animation-start="onLoad" data-mdb-animation="zoom-in"></div>
@@ -65,4 +59,3 @@
 
 
 
->>>>>>> d084655c4001c977eac03fcb5f367d2ff227578e
