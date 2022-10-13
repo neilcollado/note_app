@@ -47,7 +47,7 @@
 										<div class="card-body pb-3 pt-3">
 											<h5 class="card-title text-truncate pb-1">{{ $task->name }}</h5>
 											<p class="card-text text-primary text-truncate" style="font-family:Arial, Helvetica, sans-serif">
-												<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
+												<small>Due Date: {{ $task->due_date }}</small><br>
 											</p>
 										</div>
 									

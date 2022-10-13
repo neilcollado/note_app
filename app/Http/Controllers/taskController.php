@@ -46,7 +46,7 @@ class taskController extends Controller
 
         $validator = Validator::make($request->all(),[
             'name' => 'required',
-            'status' => 'required'
+           
         ]);
 
         if ($validator->fails())
@@ -115,7 +115,7 @@ class taskController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required',
-            'priority' => 'required|numeric'
+            
         ]);
 
         if ($validator->fails())

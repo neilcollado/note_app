@@ -25,7 +25,7 @@
 							
 							<div class="col-md-6 form-group">
 								<div class="form-outline datepicker-disable-past mb-4">
-									<input type="date" class="form-control form-control-sm" id="due_date" name="due_date" value="{{ $task->due_date->format('Y-m-d') }}"/>
+									<input type="datetime-local" class="form-control form-control-sm" id="due_date" name="due_date" value="{{ $task->due_date }}"/>
 									<label for="due_date" class="form-label">Select a date</label>
 								</div>
 							</div>
@@ -33,16 +33,33 @@
 							
 							<div class="col-md-6 form-group">
 								<div class="form-outline mb-4">
-									<input type="text" id="status" name="status" class="form-control form-control-sm" value="{{ $task->status }}"/>
 									<label class="form-label" for="status">Status</label>
+									<select name = "status">
+                                        <option value = "ongoing" {{ $task->status == "ongoing" ?'selected' : '' }}> Ongoing
+										</option>
+										<option value = "completed" {{ $task->status == "completed" ? 'selected' : '' }}> Completed
+										</option>
+                                        <option value = "missing" {{ $task->status == "missing" ? 'selected' : '' }}> Missing
+										</option>
+                                    </select>
 								</div>
 							</div>
 
 							<div class="col-md-12 form-group">
-                                <label class="form-label" for="priority">Current Priority Level: {{ $task->priority }}</label>
-                                <div class="range">
-                                    <input type="range" class="form-range" min="1" max="10" id="priority" name="priority" value="{{ $task->priority }}"/>
-                                </div>
+                                <label class="form-label" for="priority">Priority</label>
+                                    <select name = "priority">
+										<option value = "low" {{ $task->priority == "low" ? 'selected' : '' }}> Low
+										</option>
+										<option value = "normal" {{ $task->priority == "normal" ? 'selected' : '' }}> Normal
+										</option>
+										<option value = "medium" {{ $task->priority == "medium" ? 'selected' : '' }}> Medium
+										</option>
+                                        <option value = "high" {{ $task->priority == "high" ? 'selected' : '' }}> High
+										</option>
+                                    </select>
+                                <!-- <div class="range">
+                                    <input type="range" class="form-range" min="1" max="10" value="1" id="priority" name="priority" />
+                                </div> -->
                             </div>
 							
 							<div class="col-12 form-group text-center mt-4 mb-3">

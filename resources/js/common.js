@@ -160,20 +160,7 @@ const App = {
             }).catch((error) => {
                 console.error(error);
                 alert("Error in deleting contact support");
-                // mdb.Alert.getInstance(document.getElementById('placement-example')).show();
-                /*  MDB ALERT
-                    <div
-                        class="alert fade mt-3 alert-dismissible"
-                        id="placement-example"
-                        data-mdb-position="top-center"
-                        data-mdb-hidden="true"
-                        role="alert"
-                        data-mdb-color="danger"
-                        >
-                        <strong>Oops!</strong> Error in deleting contact support
-                        <button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                */
+                
             });
         }
     },

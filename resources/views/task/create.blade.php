@@ -26,24 +26,35 @@
 
                             <div class="col-md-6 form-group">
                                 <div class="form-outline datepicker-disable-past mb-4">
-                                    <input type="date" class="form-control form-control-sm" id="due_date" name="due_date" value="{{ date('Y-m-d') }}"/>
+                                    <input type="datetime-local" class="form-control form-control-sm" id="due_date" name="due_date" value="{{ date('Y-m-d\TH:i') }}"/>
                                     <label for="due_date" class="form-label">Select a date</label>
-                                </div>
+                                </div>  
                             </div>
 
 
                             <div class="col-md-6 form-group">
                                 <div class="form-outline mb-4">
-                                    <input type="text" id="status" name="status" class="form-control form-control-sm"/>
+                                    <!-- <input type="text" id="status" name="status" class="form-control form-control-sm"/> -->
                                     <label class="form-label" for="status">Status</label>
+                                    <select name = "status">
+                                        <option value="ongoing">Ongoing</option>
+                                        <option value="completed">Completed</option>
+                                        <option value="missing">Missing</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="col-md-12 form-group">
                                 <label class="form-label" for="priority">Priority</label>
-                                <div class="range">
+                                    <select name = "priority">
+                                        <option value="low">Low</option>
+                                        <option value="normal">Normal</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                    </select>
+                                <!-- <div class="range">
                                     <input type="range" class="form-range" min="1" max="10" value="1" id="priority" name="priority" />
-                                </div>
+                                </div> -->
                             </div>
         
                             <div class="col-12 form-group text-center mt-4 mb-3">
