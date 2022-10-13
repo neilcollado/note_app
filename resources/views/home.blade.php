@@ -8,14 +8,14 @@
 				{{-- Card Header --}}
 				<div class="card-header">
 					<p class="h2 pt-4 header-custom">Your Tasks
-						<button 
+						<button
 							data-url="{{ route('task.destroy.bulk') }}"
 							class="btn btn-sm btn-danger mx-1 float-end deleteRequest--bulk
 							" style="display: none;">
 							Delete Selected
 						</button>
-							
-						<button 
+
+						<button
 							data-url="{{ route('task.edit.bulk') }}"
 							class="btn btn-sm btn-info mx-1 float-end editRequest--bulk
 							" style="display: none;">
@@ -25,11 +25,11 @@
 				</div>
 				{{-- Card Body --}}
 				<div class="card-body ">
-		
+
 					@unless ($tasks->count())
 						<div class="alert alert-danger">No data found in system</div>
 					@endunless
-		
+
 					<div class="row todoCards">
 						@foreach ($tasks as $key => $task)
 							{{-- Card --}}
@@ -66,6 +66,6 @@
 		</div>
 	</div>
 </div>
-	
+
 @include('task.modals.edit-bulk')
 @endsection

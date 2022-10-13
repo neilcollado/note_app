@@ -13,36 +13,38 @@
           </div>
           <div class="card-body pb-0">
               <dl class="row">
-                <table class="table table-hover table-sm text-nowrap mb-0">
-                  <tbody>
-                    <tr>
-                      <th class="text-end" scope="row">Priority Number</th>
-                      <td><span class="text-success"> <span>{{ $task->priority }}</span> </span></td>
-                    </tr>
-                    <tr>
-                      <th class="text-end" scope="row">Due Date</th>
-                      <td><span class="text-success"> <span>{{ $task->due_date }}</span> </span></td>
-                    </tr>
-                    <tr>
-                      <th class="text-end" scope="row">Status</th>
-                      <td><span class="text-success"> <span>{{ $task->status }}</span> </span></td>
-                    </tr>
-                    <tr>
-                      <th class="text-end" scope="row">Created by</th>
-                      <td><span class="text-success"> <span>{{ $user->name }}</span> </span></td>
-                    </tr>
-                    <tr>
-                      <th class="text-end" scope="row">Sub Tasks</th>
-                      <td><span class="text-success"> <span>
-                        <ol class="list-group list-group-light list-group-numbered">
-                            @foreach ($task->items as $key => $item)
-                              <li class="list-group-item border-0 bg-transparent p-0">{{ $item->title }}</li>
-                            @endforeach
-                        </ol>
-                      </span> </span></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <section class="table-responsive-sm">
+                    <table class="table table-hover table-sm">
+                      <tbody>
+                        <tr>
+                          <th class="text-end" scope="row">Priority Number</th>
+                          <td><span class="text-success"> <span>{{ $task->priority }}</span> </span></td>
+                        </tr>
+                        <tr>
+                          <th class="text-end" scope="row">Due Date</th>
+                          <td><span class="text-success"> <span>{{ $task->due_date }}</span> </span></td>
+                        </tr>
+                        <tr>
+                          <th class="text-end" scope="row">Status</th>
+                          <td><span class="text-success"> <span>{{ $task->status }}</span> </span></td>
+                        </tr>
+                        <tr>
+                          <th class="text-end" scope="row">Created by</th>
+                          <td><span class="text-success"> <span>{{ $user->name }}</span> </span></td>
+                        </tr>
+                        <tr>
+                          <th class="text-end" scope="row">Sub Tasks</th>
+                          <td><span class="text-success"> <span>
+                            <ol class="list-group list-group-light list-group-numbered">
+                                @foreach ($task->items as $key => $item)
+                                  <li class="list-group-item border-0 bg-transparent p-0">{{ $item->title }}</li>
+                                @endforeach
+                            </ol>
+                          </span> </span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </section>
               </dl>
           </div>
           <div class="card-footer">
@@ -53,8 +55,8 @@
   </div>
 </div>
 
-  
-  
+
+
 @endsection
 
 
