@@ -50,8 +50,8 @@
 										</div>
 									</a>
 									<div class="card-footer bg-transparent border-secondary">
-										<button data-url="{{ route('task.destroy',$task->id) }}" class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
-											<i class="fas fa-trash"></i>
+										<button  class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
+											<i data-url="{{ route('task.destroy',$task->id) }}" class="fas fa-trash"></i>
 										</button>
 										<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating" role="button" aria-pressed="true">
 											<i class="fas fa-marker"></i>

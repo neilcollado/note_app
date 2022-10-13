@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->date('due_date')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default('ongoing');
             $table->integer('priority')->nullable();
             $table->integer('userId')->nullable();       
             $table->timestamps();

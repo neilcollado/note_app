@@ -31,7 +31,12 @@ class taskController extends Controller
     public function create()
     {
         //
-        return view("task.create");
+        $status = ['ongoing','completed','missing'];
+        $priority = ['low','normal','medium','high'];
+
+        return view("task.create")
+        ->with('status', $status)
+        ->with('priority', $priority);
     }
 
     /**

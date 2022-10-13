@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="mdb-page-content page-intro">
     <div class="px-3 py-5">
         <div class="container row justify-content-center py-5">
@@ -31,10 +32,13 @@
                                 </div>
                             </div>
 
-
                             <div class="col-md-6 form-group">
                                 <div class="form-outline mb-4">
-                                    <input type="text" id="status" name="status" class="form-control form-control-sm"/>
+                                    <select name="status" class="form-select" aria-label="status">
+                                        @foreach($status as $stat)
+                                            <option value="$stat">{{ $stat }}</option>
+                                        @endforeach
+                                    </select>
                                     <label class="form-label" for="status">Status</label>
                                 </div>
                             </div>
