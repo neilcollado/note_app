@@ -9,6 +9,8 @@
 
     <title>{{ config('app.name', 'Note App') }}</title>
 
+    <link rel="icon" href="/images/icon.png" sizes="16x16 32x32">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -49,9 +51,9 @@
                             <a href="{{ route('users.profile') }}" class="sidenav-link"> 
                                 <i style="padding-right: 15px;">
                                     @if(isset(Auth::user()->profile_picture))
-                                        <img src="{{ asset('uploads/users/' . Auth::user()->profile_picture) }}" alt="avatar"  class="rounded-circle img-fluid" style="width:48px; height:48px; object-fit:cover"/>
+                                        <img src="{{ asset('uploads/users/' . Auth::user()->profile_picture) }}" alt="avatar"  class="rounded-circle img-fluid" style="width:35px; height:35px; object-fit:cover"/>
                                     @else
-                                        <img src="{{ asset('/uploads/users/default.png') }}" alt="profile_picture" class="rounded-circle img-fluid" style="width:48px; height:48px; object-fit:cover"/>
+                                        <img src="{{ asset('/uploads/users/default.png') }}" alt="profile_picture" class="rounded-circle img-fluid" style="max-width: 35px;"/>
                                     @endif
                                 </i>
                                 {{ Auth::user()->name }}
