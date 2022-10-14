@@ -23,7 +23,7 @@ img {
     display: none;
 }
 
-@media (max-width: 660px) {
+@media (max-width: 990px) {
     .mdb-page-content {
         padding-left: 0px;
     }
@@ -41,11 +41,22 @@ img {
     .header-custom {
         text-align: center;
     }
+    .profile-hover {
+        margin-top: 1000px;
+    }
 }
 
-nput[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-profile {
+    cursor: pointer;
 }
 
 .gradient-custom-outer {
@@ -68,3 +79,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background: linear-gradient(to right, rgba(240, 147, 251), rgba(245, 87, 108));
 }
 
+.color-custom-profile {
+    width: 100%;
+    height: 40vh;
+    /* background: #8474FF; */
+
+    background: #48c6ef;
+    background: linear-gradient(to bottom, rgba(72, 198, 239), rgba(111, 134, 214));
+}
+
+.color-custom-security {
+    width: 100%;
+    height: 40vh;
+    
+    background: #43e97b;
+    background: linear-gradient(to top, rgba(67, 233, 123), rgba(56, 249, 215));
+}
+.color-custom-general {
+    width: 100%;
+    height: 40vh;
+
+    background: #f6d365;
+    background: linear-gradient(to bottom, rgba(246, 211, 101), rgba(253, 160, 133));
+}

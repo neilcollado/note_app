@@ -29,28 +29,35 @@
 				<div class="card-body ">
 
 					@unless ($tasks->count())
-						<div class="alert alert-danger">No data found in system</div>
+						<div class="alert alert-warning" role="alert" data-mdb-color="warning">
+							<p><i class="fas fa-exclamation-triangle me-3"></i>There are no tasks assigned to you at this time.</p>
+							<hr>
+							<p class="mb-0">Start by creating a task!</p>
+						  </div>
 					@endunless
 
 					<div class="row todoCards">
 						@foreach ($tasks as $key => $task)
 							{{-- Card --}}
-							<div class="col-lg-3 col-md-6">
+							<div class="col-lg-4 col-md-6">
 								<div class="card border border-secondary shadow-0 mb-3 card-custom" style="max-width: 18rem;">
 									<div class="card-header bg-transparent border-secondary">
 										<div class="form-check">
 											<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}">
 											<label class="form-check-label" for="cp{{ $task->id }}"></label>
+											<a href="{{ route('task.show', $task->id) }}" class="btn btn-sm bg-transparent shadow-0 btn-floating float-end p-0">
+												<i class="fas fa-eye fa-lg p-0"></i>
+											</a>
 										</div>
 									</div>
-									<a href="{{ route('task.show', $task->id) }}" style="text-decoration: none; color: black;" >
-										<div class="card-body pb-3 pt-3">
-											<h5 class="card-title text-truncate pb-1">{{ $task->name }}</h5>
-											<p class="card-text text-primary text-truncate" style="font-family:Arial, Helvetica, sans-serif">
-												<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
-											</p>
-										</div>
-									</a>
+									{{-- Card Body --}}
+									<div class="card-body pb-3 pt-3">
+										<h5 class="card-title text-truncate pb-1">{{ $task->name }}</h5>
+										<p class="card-text text-primary text-truncate" style="font-family:Arial, Helvetica, sans-serif">
+											<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
+										</p>
+									</div>
+									{{-- Card Footer --}}
 									<div class="card-footer bg-transparent border-secondary">
 										<button class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
 											<i data-url="{{ route('task.destroy',$task->id) }}" class="fas fa-trash"></i>

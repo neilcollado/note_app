@@ -63,6 +63,9 @@
                             <a href="/task/create" class="sidenav-link"> <i class="fas fa-plus" style="padding-right: 15px;"></i>Create Task</a>
                         </li>
                         <li class="sidenav-item">
+                            <a href="#!" class="sidenav-link"> <i class="fas fa-calendar-check" style="padding-right: 15px;"></i>Completed Tasks</a>
+                        </li>
+                        <li class="sidenav-item">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" 
