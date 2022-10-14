@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Task ;
 use App\Models\User ;
 use App\Models\Item ;
-
+use Auth;
 
 class taskController extends Controller
 {
@@ -47,11 +47,11 @@ class taskController extends Controller
      */
     public function store(Request $request)
     {
-        $id = auth()->user()->id;
-
         $validator = Validator::make($request->all(),[
             'name' => 'required',
-            'status' => 'required'
+            'status' => 'required|in:ongoing,completed,missing',
+            'priority' => 'required|in:low,normal,medium,high',
+            'due_date' => 'required','date',
         ]);
 
         if ($validator->fails())
@@ -62,26 +62,24 @@ class taskController extends Controller
             'due_date' => $request->due_date,
             'status' => $request->status,
             'priority' => $request->priority,
-            'userId' => $id
+            'userId' => Auth::id(),
         ]);
 
         if ($request->items) {
             foreach($request->items as $item){
                 if (empty($item)) continue;
                 Item::create([
-                    'title'  => $item,
-                    'task_id'   => $task->id
+                    'title' => $item,
+                    'task_id' => $task->id
                 ]);
             }
         }
-
-
+        
         return response()->json([
             'success' => true,
             'message'=>__('Task successfully added'),
             'url' => route('task.index')
         ]);
-
     }
 
     /**

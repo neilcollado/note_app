@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@include('partials.alerts')
+
 <div class="mdb-page-content page-intro">
 	<div class="px-3 py-5">
 		<div class="container" style="margin-left: 0%;">
