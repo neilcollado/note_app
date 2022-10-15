@@ -39,8 +39,8 @@
 					<div class="row todoCards">
 						@foreach ($tasks as $key => $task)
 							{{-- Card --}}
-							<div class="col-lg-4 col-md-6">
-								<div class="card border border-secondary shadow-0 mb-3 card-custom" style="max-width: 18rem;">
+							<div class="col-md-3">
+								<div class="card w-100 border border-secondary shadow-0 mb-3 card-custom" style="max-width: 18rem;">
 									<div class="card-header bg-transparent border-secondary">
 										<div class="form-check">
 											<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}">
