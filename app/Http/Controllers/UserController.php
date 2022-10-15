@@ -102,6 +102,8 @@ class UserController extends Controller
             $validated['profile_picture'] = $filename;
         }
 
+        $validated['name'] = $validated['first_name'] . ' ' . $validated['last_name'];
+
         //update user
         User::where('id', Auth::id())->update($validated);
         $request->session()->flash('success', 'Updated Successfully');
@@ -130,11 +132,9 @@ class UserController extends Controller
             }],
             'password' => 'required|min:8|string|different:old_password|confirmed',
         ]);
-        
-        $user = User::findOrFail($id);
-        $user->password = Hash::make($validated['password']);
-        $user->save();
 
+        User::where('id', Auth::id())->update(['password' => Hash::make($validated['password'])]);
+        
         $request->session()->flash('success', 'Updated Successfully');
         return redirect(route('users.profile'));
     }
