@@ -11,7 +11,7 @@ const setMode = (e) => {
 
   innerWidth = window.innerWidth;
 
-  if (window.innerWidth < 660) {
+  if (window.innerWidth < 990) {
     instance.changeMode('over');
     instance.hide();
   } else {
@@ -23,7 +23,7 @@ setMode();
 // Event listeners
 window.addEventListener('resize', setMode);
 
-//Date Picker
+// //Date Picker
 const datepickerDisablePast = document.querySelector('.datepicker-disable-past');
 new mdb.Datepicker(datepickerDisablePast, {
   disablePast: true,
