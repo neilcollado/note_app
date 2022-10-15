@@ -2,6 +2,7 @@
 
 <div class="card-body text-center p-0">
     <div class="color-custom-general"></div>
+
     {{-- PROFILE PICTURE CONTAINER --}}
     <div class="container pl-3 pb-5">
         <div class="float-start">
@@ -26,8 +27,9 @@
         </span>
     @enderror
 
-    <div class="container mb-4 pb-1" style=" margin-top: -20px;">
-        <p class="small text-start text-uppercase">Hey {{ $user->first_name }}! Always keep your profile updated!</p>
+    <div class="container pb-4" style="margin-top: -20px; margin-left: 30%">
+        <p class="h4 text-start">{{ $user->name }} 
+        </p>
     </div>
 
     {{-- FORM CONTAINER --}}
