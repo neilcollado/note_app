@@ -36,10 +36,15 @@
                                 </div>
         
                                 <div class="row mb-0">
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-block btn-primary">
+                                    <div class="col mb-2">
+                                        <button type="submit" class="btn btn-block btn-success">
                                             {{ __('Send Password Reset Link') }}
                                         </button>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <a href="{{ url('/') }}" type="submit" class="btn btn-block btn-danger">
+                                            {{ __('Home') }}
+                                        </a>
                                     </div>
                                 </div>
                             </form>
