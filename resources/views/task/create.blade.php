@@ -96,10 +96,10 @@
                                 
                                 <div class="row">
                                     <div class="col-sm mb-2">
-                                        <a href="{{ url('/') }}" class="btn btn-primary btn-block">Back</a>
+                                        <button class="btn btn-success btn-block">Create</button>
                                     </div>
                                     <div class="col-sm mb-2">
-                                        <button class="btn btn-success btn-block">Create</button>
+                                        <a href="{{ url('/') }}" class="btn btn-danger btn-block">Back</a>
                                     </div>
                                 </div>
                             </form>

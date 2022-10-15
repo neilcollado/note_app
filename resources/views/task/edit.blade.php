@@ -100,10 +100,10 @@
 
 								<div class="row">
                                     <div class="col-sm mb-2">
-                                        <a href="{{ url('/') }}" class="btn btn-primary btn-block">Cancel</a>
+										<button class="btn btn-warning btn-block">Update</button>
                                     </div>
                                     <div class="col-sm mb-2">
-										<button class="btn btn-success btn-block">Update</button>
+										<a href="{{ url('/') }}" class="btn btn-danger btn-block">Cancel</a>
                                     </div>
                                 </div>
 							</form>

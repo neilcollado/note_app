@@ -51,7 +51,7 @@
     <div class="container p-0">
         <div class="row">
             <div class="col-sm mb-2 mt-2">
-                <button type="submit" class="btn btn-block btn-success me-2">{{ __('Update Password') }}</button>
+                <button type="submit" class="btn btn-block btn-warning me-2">{{ __('Update Password') }}</button>
             </div>
             <div class="col-sm mb-2 mt-2">
                 <a href="{{ route('users.profile') }}" class="btn btn-block btn-danger">{{ __('Cancel') }}</a>
