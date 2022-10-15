@@ -102,6 +102,8 @@ class UserController extends Controller
             $validated['profile_picture'] = $filename;
         }
 
+        $validated['name'] = $validated['first_name'] . ' ' . $validated['last_name'];
+
         //update user
         User::where('id', Auth::id())->update($validated);
         $request->session()->flash('success', 'Updated Successfully');
