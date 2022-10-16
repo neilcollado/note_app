@@ -28,7 +28,7 @@
     <div id="app">
         <div class="container">
             <!-- Sidenav -->
-            <nav id="sidenav-1" class="sidenav" data-mdb-hidden="false">
+            <nav id="sidenav-1" class="sidenav" data-mdb-hidden="false" data-mode="side">
                 <a href="/" class="ripple d-flex justify-content-center py-4 mb-3" style="border-bottom: 2px solid #f5f5f5" href="#!" data-mdb-ripple-color="primary">
                     <img id="MDB-logo" src="/images/logo.png" alt="Note App" draggable="true"/>
                 </a>
