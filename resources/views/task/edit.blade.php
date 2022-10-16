@@ -48,7 +48,7 @@
 									<div class="col-md-12 form-group">
 										<select class="select" name="priority">
 											<option value="{{ $task->priority }}" hidden selected>{{ $task->priority }}</option>
-											<option value="	">low</option>
+											<option value="1">low</option>
 											<option value="2">normal</option>
 											<option value="3">medium</option>
 											<option value="4">high</option>
