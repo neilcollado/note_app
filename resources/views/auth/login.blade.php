@@ -18,22 +18,22 @@
     </div>
     <!-- Toggler -->
     <div class="text-center px-3 py-5">
-        <div class="row py-5">
-            <div class="col-md-6">
-                <div class="view overlay mb-5"
-                    data-mdb-toggle="animation"
-                    data-mdb-animation-reset="true"
-                    data-mdb-animation-start="onHover"
-                    data-mdb-animation="pulse">
-                    <img src="/images/bg2.png" class="img-fluid" style="max-width: 80%;" alt="">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="view overlay mb-5"
+                        data-mdb-toggle="animation"
+                        data-mdb-animation-reset="true"
+                        data-mdb-animation-start="onHover"
+                        data-mdb-animation="pulse">
+                        <img src="/images/bg2.png" class="img-fluid" style="max-width: 80%;" alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
+                <div class="col-md-6">
+                    <div class="container">
                         <div class="card">
-                            <div class="card-header">
-                                <p class="h1">
+                            <div class="card-header" style="background-color: #E1BEE7;">
+                                <p class="h1" style="color: #4A148C;">
                                     <i class="fas fa-user-circle"></i>
                                     {{ __('LOGIN') }}
                                 </p>
@@ -73,23 +73,21 @@
                                         </div>
                                     </div>
         
-                                    <div style="margin-left: 5%; margin-right: 5%;">
-                                        <div class="row mb-4">
-                                            <div class="col">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
-                                                    <label class="form-check-label" for="remember"> Remember me </label>
-                                                </div>
+                                    <div class="row mb-4">
+                                        <div class="col d-flex justify-content-center">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
+                                                <label class="form-check-label" for="remember">Remember me</label>
                                             </div>
-                                        
-                                            <div class="col">
-                                                @if (Route::has('password.request'))
+                                        </div>
+                                    
+                                        <div class="col">
+                                            @if (Route::has('password.request'))
                                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                                     {{ __('Forgot Your Password?') }}
                                                 </a>
-                                                @endif
-                                            </div>
-                                        </div>                        
+                                            @endif
+                                        </div>
                                     </div>
         
                                     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
