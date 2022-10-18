@@ -21,7 +21,7 @@
 				Edit Status / Priority Selected
 			</button>
 		</p>
-		<p class="fs-6 pt-0 header-custom">Welcome <strong>{{ Auth::user()->name }}</strong>!</p>
+		<p class="fs-6 pt-0 header-custom">Welcome <strong>{{ Auth::user()->first_name }}</strong>!</p>
 		{{-- Dashboard Container--}}
 		@if ($tasks->count() == 0)
 			<div class="alert alert-warning" role="alert" data-mdb-color="warning">
@@ -65,7 +65,7 @@
 										</div>
 									</div>
 								</div>
-								
+
 							@endforeach
 						</div>
 					</div>
