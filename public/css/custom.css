@@ -40,6 +40,9 @@ img {
     .header-custom {
         text-align: center;
     }
+    .header-custom2 {
+        text-align: center;
+    }
     .profile-hover {
         margin-top: 1000px;
     }
@@ -100,4 +103,12 @@ input[type="file"] {
 
     background: #f6d365;
     background: linear-gradient(to bottom, rgba(246, 211, 101), rgba(253, 160, 133));
+}
+
+.color-custom-view {
+    width: 100%;
+    height: 30vh;
+
+    background: #30cfd0;
+    background: linear-gradient(to right, rgba(48, 207, 208), rgba(51, 8, 103));
 }

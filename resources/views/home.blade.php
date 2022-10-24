@@ -6,22 +6,34 @@
 <div class="mdb-page-content page-intro">
 	<div class="px-3 py-5">
 		{{-- Dashboard Header --}}
-		<p class="h2 pt-4 pb-0 header-custom">Dashboard
-			<button
-				data-url="{{ route('task.destroy.bulk') }}"
-				class="btn btn-sm btn-danger mx-1 float-end deleteRequest--bulk
-				" style="display: none;">
-				Delete Selected
-			</button>
-
-			<button
-				data-url="{{ route('task.edit.bulk') }}"
-				class="btn btn-sm btn-info mx-1 float-end editRequest--bulk
-				" style="display: none;">
-				Edit Status / Priority Selected
-			</button>
-		</p>
-		<p class="fs-6 pt-0 header-custom">Welcome <strong>{{ Auth::user()->first_name }}</strong>!</p>
+		<div class="">
+			<p class="h2 pt-4 pb-0">Dashboard</p>
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-6">
+					<p class="fs-6 pt-0">Welcome <strong>{{ Auth::user()->first_name }}</strong>!</p>
+				</div>
+				<div class="col">
+					<div class="row">
+						<div class="col">
+							<button
+								data-url="{{ route('task.edit.bulk') }}"
+								class="btn btn-sm btn-block btn-info mx-1 mb-2 float-end editRequest--bulk text-truncate
+								" style="display: none;">
+								Edit Status / Priority Selected
+							</button>
+						</div>
+						<div class="col">
+							<button
+								data-url="{{ route('task.destroy.bulk') }}"
+								class="btn btn-sm btn-block btn-danger mx-1 mb-2 float-end deleteRequest--bulk text-truncate
+								" style="display: none;">
+								Delete Selected
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		{{-- Dashboard Container--}}
 		@if ($tasks->count() == 0)
 			<div class="alert alert-warning" role="alert" data-mdb-color="warning">

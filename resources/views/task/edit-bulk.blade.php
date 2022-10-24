@@ -4,18 +4,25 @@
 	<div class="row">
 		@foreach ($tasks as $task)
 			<div class="card-header">{{ $task->name }}</div>
-			<div class="form-group">
-				<div class="form-outline mb-4">
-					<input type="text" id="status" name="status[{{ $task->id }}]" class="form-control form-control-sm" value="{{ $task->status }}"/>
-					<label class="form-label" for="status">Status</label>
-				</div>
+			{{-- Status --}}
+			<div class="col-md-6 form-group mb-4">
+				<select name="status" class="select" aria-label="status">
+					<option value="{{ $task->status }}">{{ $task->status }}</option>
+					<option value="completed">completed</option>
+				</select>
+				<label class="form-label select-label" for="status">Status</label>
 			</div>
 
-			<div class="form-group">
-				<label class="form-label" for="priority">Current Priority Level: {{ $task->priority }}</label>
-				<div class="range">
-					<input type="range" class="form-range" min="1" max="10" id="priority" name="priority[{{ $task->id }}]" value="{{ $task->priority }}"/>
-				</div>
+			{{-- Priority --}}
+			<div class="col-md-12 form-group">
+				<select class="select" name="priority">
+					<option value="{{ $task->priority }}" hidden selected>{{ $task->priority }}</option>
+					<option value="1">low</option>
+					<option value="2">normal</option>
+					<option value="3">medium</option>
+					<option value="4">high</option>
+				</select>
+				<label class="form-label select-label">Current Priority Level: {{ $task->priority }}</label>
 			</div>
 		@endforeach
 		<div class="col-12 my-2 appForm--response"></div>
