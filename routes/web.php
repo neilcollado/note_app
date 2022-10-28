@@ -29,9 +29,12 @@ Route::middleware('auth')->group(function(){
   Route::post('task/destory/bulk',[taskController::class,'bulkDestroy'])->name('task.destroy.bulk');
   Route::post('task/edit/bulk',[taskController::class,'bulkEdit'])->name('task.edit.bulk');
   Route::put('task/edit/bulk',[taskController::class,'bulkUpdate'])->name('task.edit.bulk.submit');
+  Route::get('task/complete',[taskController::class,'getComplete'])->name('task.getComplete');
+
   
   //route resources
   Route::resource('/users', UserController::class)->middleware('isOwner');
   Route::resource('/task', taskController::class);
+
 });
 

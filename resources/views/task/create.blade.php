@@ -36,7 +36,7 @@
                                     </div>
         
                                     {{-- Priority --}}
-                                    <div class="col-md-6 form-group mb-4">
+                                    <div class="col-md-4 form-group mb-4">
                                         <select class="select" name="priority">
                                             <option value="" hidden selected></option>
                                             @foreach($priority as $prio)
@@ -47,10 +47,16 @@
                                     </div>
         
                                     {{-- Due Date --}}
-                                    <div class="col-md-6 form-group">
+                                    <div class="col-md-4 form-group">
                                         <div class="form-outline datepicker-disable-past mb-3" id="datepicker">
                                             <input type="date" class="form-control" id="due_date" name="due_date" value="{{ date('Y-m-d') }}"/>
                                             <label for="due_date" class="form-label">Select a date</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <div class="form-outline datepicker-disable-past mb-3" id="datepicker">
+                                            <input type="time" class="form-control" id="due_time" name="due_time" value= "{{ date('H:i:s') }}"/>
+                                            <label for="due_time" class="form-label">Select a time</label>
                                         </div>
                                     </div>
         
@@ -92,6 +98,7 @@
                                     </div>
                                     
                                 </div>
+                                
                                 <div class="appForm--response my-2"></div>
                                 
                                 <div class="row">

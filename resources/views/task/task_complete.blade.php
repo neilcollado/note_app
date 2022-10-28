@@ -7,7 +7,7 @@
 	<div class="px-3 py-5">
 		{{-- Dashboard Header --}}
 		<div class="">
-			<p class="h2 pt-4 pb-0">Dashboard</p>
+			<p class="h2 pt-4 pb-0">List of Completed Tasks</p>
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-6">
 					<p class="fs-6 pt-0">Welcome <strong>{{ Auth::user()->first_name }}</strong>!</p>
@@ -15,12 +15,6 @@
 				<div class="col">
 					<div class="row">
 						<div class="col">
-							<button
-								data-url="{{ route('task.edit.bulk') }}"
-								class="btn btn-sm btn-block btn-info mx-1 mb-2 float-end editRequest--bulk text-truncate
-								" style="display: none;">
-								Edit Status / Priority Selected
-							</button>
 						</div>
 						<div class="col">
 							<button
@@ -37,9 +31,9 @@
 		{{-- Dashboard Container--}}
 		@if ($tasks->count() == 0)
 			<div class="alert alert-warning" role="alert" data-mdb-color="warning">
-				<p><i class="fas fa-exclamation-triangle me-3"></i>There are no tasks assigned to you at this time.</p>
+				<p><i class="fas fa-exclamation-triangle me-3"></i>No completed tasks yet.</p>
 				<hr>
-				<p class="mb-0">Start by creating a task!</p>
+				<p class="mb-0">Start by creating and finishing a task!</p>
 			</div>
 		@else
 			<div class="card">
@@ -52,13 +46,8 @@
 									<div class="card w-100 border border-secondary shadow-0 mb-3 card-custom">
 										<div class="card-header border-secondary" style="background-color: #9FA8DA;">
 											<div class="form-check">
-											@if($task->status == 'missing' )
-												<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}" disabled>
-												<label class="form-check-label" for="cp{{ $task->id }}"></label>
-												@else
 												<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}">
 												<label class="form-check-label" for="cp{{ $task->id }}"></label>
-											@endif
 											</div>
 										</div>
 										{{-- Card Body --}}
@@ -73,15 +62,6 @@
 											<button class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
 												<i data-url="{{ route('task.destroy',$task->id) }}" class="fas fa-trash"></i>
 											</button>
-											@if($task->status == 'missing' )
-												<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating disabled" role="button" aria-pressed="true" >
-													<i class="fas fa-marker"></i>
-												</a>
-												@else
-												<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating" role="button" aria-pressed="true">
-												<i class="fas fa-marker"></i>
-												</a>
-											@endif
 											<a href="{{ route('task.show', $task->id) }}" class="btn btn-sm bg-success btn-floating p-0">
 												<i class="fas fa-eye fa-lg p-0 text-white"></i>
 											</a>
@@ -98,5 +78,4 @@
 	</div>
 </div>
 
-@include('task.modals.edit-bulk')
 @endsection

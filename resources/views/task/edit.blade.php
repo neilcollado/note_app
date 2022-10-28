@@ -28,17 +28,24 @@
 									</div>
 									
 									{{-- Due Date --}}
-									<div class="col-md-6 form-group">
+									<div class="col-md-4 form-group">
 										<div class="form-outline datepicker-disable-past mb-4">
 											<input type="date" class="form-control" id="due_date" name="due_date" value="{{ $task->due_date->format('Y-m-d') }}"/>
 											<label for="due_date" class="form-label">Select a date</label>
 										</div>
 									</div>
-									
+									<div class="col-md-4 form-group">
+                                        <div class="form-outline datepicker-disable-past mb-3" id="datepicker">
+                                            <input type="time" class="form-control" id="due_time" name="due_time" value="{{ $task->due_time->format('H:i:s')}}"/>
+                                            <label for="due_time" class="form-label">Select a time</label>
+                                        </div>
+                                    </div>
+
+
 									{{-- Status --}}
-									<div class="col-md-6 form-group mb-4">
+									<div class="col-md-4 form-group mb-4">
 										<select name="status" class="select" aria-label="status">
-											<option value="{{ $task->status }}">{{ $task->status }}</option>
+											<option value="{{ $task->status }}" hidden selected>{{ $task->status }}</option>
 											<option value="completed">completed</option>
 										</select>
 										<label class="form-label select-label" for="status">Status</label>

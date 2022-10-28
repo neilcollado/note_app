@@ -23,7 +23,8 @@
                           </tr>
                           <tr>
                             <th class="text-end" scope="row">Due Date</th>
-                            <td class="text-start"><span class="text-success"> <span>{{ $task->due_date }}</span> </span></td>
+                            <td class="text-start"><span class="text-success"> <span> {{$task->due_date->format('Y-m-d')}} {{$task->due_time->format('H:i:s')}}</span> </span></td>
+                            
                           </tr>
                           <tr>
                             <th class="text-end" scope="row">Status</th>
@@ -49,7 +50,7 @@
                 </dl>
             </div>
             <div class="card-footer">
-              <a href="{{ url('/') }}" class="btn btn-sm btn-block float-end text-white" style="background-color: #E57373;">Return</a>
+              <a href="{{ url()->previous() }}" class="btn btn-sm btn-block float-end text-white" style="background-color: #E57373;">Return</a>
             </div>
           </div> 
         </div>

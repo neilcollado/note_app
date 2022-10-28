@@ -6,7 +6,7 @@
 			<div class="card-header">{{ $task->name }}</div>
 			{{-- Status --}}
 			<div class="col-md-6 form-group mb-4">
-				<select name="status" class="select" aria-label="status">
+				<select name="status[{{ $task->id }}]" class="select" aria-label="status">
 					<option value="{{ $task->status }}">{{ $task->status }}</option>
 					<option value="completed">completed</option>
 				</select>
@@ -15,7 +15,7 @@
 
 			{{-- Priority --}}
 			<div class="col-md-12 form-group">
-				<select class="select" name="priority">
+				<select class="select" name="priority[{{ $task->id }}]">
 					<option value="{{ $task->priority }}" hidden selected>{{ $task->priority }}</option>
 					<option value="1">low</option>
 					<option value="2">normal</option>

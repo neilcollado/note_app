@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Task ;
 use App\Models\User ;
 use App\Models\Item ;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class taskController extends Controller
 {
@@ -18,9 +19,19 @@ class taskController extends Controller
      */
     public function index()
     {
+       // $today = Carbon::today();
+        $today = date('Y-m-d',time());
+        $current_time = date('H:i:s',time());
+
         $id = auth()->user()->id;
-        $tasks = Task::where('userId',$id)->orderBy('priority','asc')->get();
-        return view('home',compact('tasks'));
+        $tasks = Task::where('userId',$id)->where('status','!=','completed')->orderBy('due_date','asc')->get();
+        foreach($tasks as $key){
+
+            if($key->status === 'ongoing' && $key->due_date->format('Y-m-d') <= $today && $key->due_time->format('H:i:s') < $current_time){
+                Task::where('id',$key->id)->update(['status' => 'missing']);
+            }
+        }
+       return view('home',compact('tasks'));
     }
 
     /**
@@ -30,10 +41,9 @@ class taskController extends Controller
      */
     public function create()
     {
-        //
+        
         $status = ['ongoing','completed','missing'];
         $priority = ['low','normal','medium','high'];
-
         return view("task.create")
         ->with('status', $status)
         ->with('priority', $priority);
@@ -51,7 +61,8 @@ class taskController extends Controller
             'name' => 'required',
             'status' => 'required|in:ongoing,completed,missing',
             'priority' => 'required|in:low,normal,medium,high',
-            'due_date' => 'required','date',
+            'due_date' => 'required',
+            'due_time' => 'required'
         ]);
 
         if ($validator->fails())
@@ -60,6 +71,7 @@ class taskController extends Controller
         $task = Task::create([
             'name' => $request->name,
             'due_date' => $request->due_date,
+            'due_time' => $request->due_time,
             'status' => $request->status,
             'priority' => $request->priority,
             'userId' => Auth::id(),
@@ -74,7 +86,6 @@ class taskController extends Controller
                 ]);
             }
         }
-        
         return response()->json([
             'success' => true,
             'message'=>__('Task successfully added'),
@@ -94,6 +105,14 @@ class taskController extends Controller
         $user = User::findOrFail($task->userId);
         return view('task.view')->with('task', $task)->with('user',$user);
     }
+
+    public function getComplete()
+    {
+        $id = auth()->user()->id;
+        $tasks = Task::where('userId',$id)->where('status','completed')->orderBy('due_date','asc')->get();
+        return view('task.task_complete',compact('tasks'));
+    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -118,7 +137,7 @@ class taskController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required',
-            'priority' => 'required|numeric'
+            'priority' => 'required'
         ]);
 
         if ($validator->fails())
@@ -136,7 +155,14 @@ class taskController extends Controller
                     'task_id'   => $task->id
                 ]);
             }
-                
+        }
+
+        if ($request->status === 'completed'){
+            return response()->json([
+                'success' => true,
+                'message'=>__('Congratulations you have successfully completed the task.'),
+                'url' => route('task.getComplete')
+            ]);
         }
 
         return response()->json([
@@ -145,6 +171,7 @@ class taskController extends Controller
             'url' => route('task.index')
         ]);
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -189,5 +216,4 @@ class taskController extends Controller
             'url'    => route('task.index')
         ]);
     }
-
 }
