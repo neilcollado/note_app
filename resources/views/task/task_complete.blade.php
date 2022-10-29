@@ -43,8 +43,8 @@
 							@foreach ($tasks as $key => $task)
 								{{-- Card --}}
 								<div class="col-12 col-md-6 col-lg-3">
-									<div class="card w-100 border border-secondary shadow-0 mb-3 card-custom">
-										<div class="card-header border-secondary" style="background-color: #9FA8DA;">
+									<div class="card w-100 border border-success shadow-0 mb-3 card-custom">
+										<div class="card-header border-success bg-success">
 											<div class="form-check">
 												<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}">
 												<label class="form-check-label" for="cp{{ $task->id }}"></label>
@@ -58,7 +58,7 @@
 											</p>
 										</div>
 										{{-- Card Footer --}}
-										<div class="card-footer bg-transparent border-secondary">
+										<div class="card-footer bg-transparent border-success">
 											<button class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
 												<i data-url="{{ route('task.destroy',$task->id) }}" class="fas fa-trash"></i>
 											</button>

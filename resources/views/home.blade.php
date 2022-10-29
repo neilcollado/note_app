@@ -49,13 +49,18 @@
 							@foreach ($tasks as $key => $task)
 								{{-- Card --}}
 								<div class="col-12 col-md-6 col-lg-3">
-									<div class="card w-100 border border-secondary shadow-0 mb-3 card-custom">
+									@if($task->status == 'missing' )
+										<div class="card w-100 border border-danger shadow-0 mb-3 card-custom">
+										<div class="card-header border-danger bg-danger">
+									@else
+										<div class="card w-100 border border-secondary shadow-0 mb-3 card-custom">
 										<div class="card-header border-secondary" style="background-color: #9FA8DA;">
+									@endif
 											<div class="form-check">
 											@if($task->status == 'missing' )
 												<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}" disabled>
 												<label class="form-check-label" for="cp{{ $task->id }}"></label>
-												@else
+											@else
 												<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}">
 												<label class="form-check-label" for="cp{{ $task->id }}"></label>
 											@endif
@@ -64,12 +69,22 @@
 										{{-- Card Body --}}
 										<div class="card-body pb-3 pt-3">
 											<h5 class="card-title text-truncate pb-1">{{ $task->name }}</h5>
-											<p class="card-text text-primary text-truncate" style="font-family:Arial, Helvetica, sans-serif">
-												<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
-											</p>
+											@if($task->status == 'missing' )
+												<p class="card-text text-danger text-truncate" style="font-family:Arial, Helvetica, sans-serif">
+													<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
+												</p>
+											@else
+												<p class="card-text text-primary text-truncate" style="font-family:Arial, Helvetica, sans-serif">
+													<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
+												</p>
+											@endif
 										</div>
 										{{-- Card Footer --}}
-										<div class="card-footer bg-transparent border-secondary">
+										@if($task->status == 'missing' )
+											<div class="card-footer bg-transparent border-danger">
+										@else
+											<div class="card-footer bg-transparent border-secondary">
+										@endif
 											<button class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
 												<i data-url="{{ route('task.destroy',$task->id) }}" class="fas fa-trash"></i>
 											</button>
@@ -77,7 +92,7 @@
 												<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating disabled" role="button" aria-pressed="true" >
 													<i class="fas fa-marker"></i>
 												</a>
-												@else
+											@else
 												<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating" role="button" aria-pressed="true">
 												<i class="fas fa-marker"></i>
 												</a>

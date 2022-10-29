@@ -23,7 +23,7 @@
                           </tr>
                           <tr>
                             <th class="text-end" scope="row">Due Date</th>
-                            <td class="text-start"><span class="text-success"> <span> {{$task->due_date->format('Y-m-d')}} {{$task->due_time->format('H:i:s')}}</span> </span></td>
+                            <td class="text-start"><span class="text-success"> <span> {{$task->due_date->format('Y-m-d')}} at {{$task->due_time->format('h:iA')}}</span> </span></td>
                             
                           </tr>
                           <tr>
