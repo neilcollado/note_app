@@ -32,8 +32,8 @@
                 <div class="col-md-6">
                     <div class="container">
                         <div class="card">
-                            <div class="card-header" style="background-color: #E1BEE7;">
-                                <p class="h1" style="color: #4A148C;">
+                            <div class="card-header" style="background-color: #C6D1E7;">
+                                <p class="h1" style="color: #4C638F;">
                                     <i class="fas fa-user-circle"></i>
                                     {{ __('LOGIN') }}
                                 </p>

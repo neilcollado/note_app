@@ -8,7 +8,7 @@
 		{{-- Dashboard Header --}}
 		<div class="">
 			<p class="h2 pt-4 pb-0">Dashboard</p>
-			<div class="row d-flex justify-content-center">
+			<div class="row">
 				<div class="col-md-6">
 					<p class="fs-6 pt-0">Welcome <strong>{{ Auth::user()->first_name }}</strong>!</p>
 				</div>

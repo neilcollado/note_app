@@ -19,16 +19,19 @@
                         <tbody>
                           <tr>
                             <th class="text-end" scope="row">Priority Number</th>
-                            <td class="text-start"><span class="text-success"> <span>{{ $task->priority }}</span> </span></td>
+                            <td class="text-start"><span class="text-success text-capitalize"> <span>{{ $task->priority }}</span> </span></td>
                           </tr>
                           <tr>
                             <th class="text-end" scope="row">Due Date</th>
                             <td class="text-start"><span class="text-success"> <span> {{$task->due_date->format('Y-m-d')}} at {{$task->due_time->format('h:iA')}}</span> </span></td>
-                            
                           </tr>
                           <tr>
                             <th class="text-end" scope="row">Status</th>
-                            <td class="text-start"><span class="text-success"> <span>{{ $task->status }}</span> </span></td>
+                            @if ($task->status == 'missing')
+                              <td class="text-start"><span class="text-danger text-capitalize"> <span>{{ $task->status }}</span> </span></td>
+                            @else
+                              <td class="text-start"><span class="text-success text-capitalize"> <span>{{ $task->status }}</span> </span></td>
+                            @endif
                           </tr>
                           <tr>
                             <th class="text-end" scope="row">Created by</th>

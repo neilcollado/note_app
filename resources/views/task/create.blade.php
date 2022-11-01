@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="col-md-4 form-group">
                                         <div class="form-outline mb-3">
-                                            <input type="time" step="any" class="form-control" id="due_time" name="due_time" value= "{{ date('h:i') }}"/>
+                                            <input type="time" class="form-control" id="due_time" name="due_time" value= "{{ date('H:i') }}"/>
                                             <label for="due_time" class="form-label">Select a time</label>
                                         </div>
                                     </div>
