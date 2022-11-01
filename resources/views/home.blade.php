@@ -42,72 +42,117 @@
 				<p class="mb-0">Start by creating a task!</p>
 			</div>
 		@else
-			<div class="card">
-				<div class="container mt-2" style="margin-left: 0">
-					<div class="card-body">
-						<div class="row todoCards">
-							@foreach ($tasks as $key => $task)
-								{{-- Card --}}
-								<div class="col-12 col-md-6 col-lg-3">
-									@if($task->status == 'missing' )
-										<div class="card w-100 border border-danger shadow-0 mb-3 card-custom">
-										<div class="card-header border-danger bg-danger">
+			<div class="todoCards">
+				@foreach ($tasks as $key => $task)
+					@if($task->status == 'missing' )
+						<div class="card rounded-0 border border-2 border-danger border-bottom-0 border-start-0 border-end-0 shadow-0 mb-2">
+					@else
+						<div class="card rounded-0 border border-2 border-dark border-bottom-0 border-start-0 border-end-0 shadow-0 mb-2">
+					@endif
+						<div class="row g-0">
+							<div class="col-md-3" style="background-color: #DCE4F4;">
+								<h5 class="card-title text-truncate py-3 px-3 fw-bold task-header-title">
+									@if($task->status != 'missing' )
+										<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}">
+										<label class="form-check-label" for="cp{{ $task->id }}"></label>
 									@else
-										<div class="card w-100 border border-secondary shadow-0 mb-3 card-custom">
-										<div class="card-header border-secondary" style="background-color: #9FA8DA;">
+										<i class="fas fa-exclamation-circle text-danger" style="padding-right: 13px;"></i>
 									@endif
-											<div class="form-check">
-											@if($task->status == 'missing' )
-												<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}" disabled>
-												<label class="form-check-label" for="cp{{ $task->id }}"></label>
-											@else
-												<input type="checkbox" class="form-check-input" id="cp{{ $task->id }}" value="{{ $task->id }}">
-												<label class="form-check-label" for="cp{{ $task->id }}"></label>
-											@endif
-											</div>
-										</div>
-										{{-- Card Body --}}
-										<div class="card-body pb-3 pt-3">
-											<h5 class="card-title text-truncate pb-1">{{ $task->name }}</h5>
-											@if($task->status == 'missing' )
-												<p class="card-text text-danger text-truncate" style="font-family:Arial, Helvetica, sans-serif">
-													<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
-												</p>
-											@else
-												<p class="card-text text-primary text-truncate" style="font-family:Arial, Helvetica, sans-serif">
-													<small>Due Date: {{ $task->due_date->format('Y-m-d') }}</small><br>
-												</p>
-											@endif
-										</div>
-										{{-- Card Footer --}}
-										@if($task->status == 'missing' )
-											<div class="card-footer bg-transparent border-danger">
-										@else
-											<div class="card-footer bg-transparent border-secondary">
-										@endif
-											<button class="btn btn-sm deleteRequest--btn btn-danger btn-floating">
-												<i data-url="{{ route('task.destroy',$task->id) }}" class="fas fa-trash"></i>
+									{{ $task->name }}
+								</h5>
+							</div>
+							<div class="col-md-7">
+								<div class="card-body py-2 due-date-card">
+									@if($task->status != 'missing' )
+										<p class="card-text fs-6 my-0 py-0">
+											<i class="far fa-calendar"></i> <small>Due date: {{ $task->due_date->format('Y-m-d') }}</small>
+										</p>
+										<p class="card-text fs-6 my-0 py-0">
+											<i class="far fa-clock"></i> <small><span class="fw-light">Time: {{$task->due_time->format('h:iA')}}</span></small>
+										</p>
+									@else
+										<p class="card-text text-danger fs-6 my-0 py-0">
+											<i class="far fa-calendar"></i> <small>Due date: {{ $task->due_date->format('Y-m-d') }}</small>
+										</p>
+										<p class="card-text text-danger fs-6 my-0 py-0">
+											<i class="far fa-clock"></i> <small><span class="fw-light">Time: {{$task->due_time->format('h:iA')}}</span></small>
+										</p>
+									@endif
+								</div>
+							</div>
+							<div class="col-sm pt-3 actions-dropdown">
+								@if($task->status != 'missing' )
+									<p class="text-starts text-success text-uppercase fw-normal" style="padding-top: 3px;">{{ $task->status }}</p>
+								@else
+									<p class="text-starts text-danger text-uppercase fw-normal" style="padding-top: 3px;">{{ $task->status }}</p>
+								@endif
+							</div>
+							<div class="col-sm">
+								<div class="actions-dropdown">
+									<div class="d-flex justify-content-center">
+										<div class="btn-group dropstart shadow-0 py-3">
+											<button type="button" class="btn btn-transparent shadow-0 p-2 rounded-0" data-mdb-toggle="dropdown" aria-expanded="false">
+												<i class="fas fa-lg fa-ellipsis-v"></i>
 											</button>
-											@if($task->status == 'missing' )
-												<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating disabled" role="button" aria-pressed="true" >
-													<i class="fas fa-marker"></i>
-												</a>
-											@else
-												<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm btn-info btn-floating" role="button" aria-pressed="true">
-												<i class="fas fa-marker"></i>
-												</a>
-											@endif
-											<a href="{{ route('task.show', $task->id) }}" class="btn btn-sm bg-success btn-floating p-0">
-												<i class="fas fa-eye fa-lg p-0 text-white"></i>
-											</a>
+											<ul class="dropdown-menu dropdown-menu-end">
+												@if($task->status != 'missing' )
+													<li>
+														<a href="{{ route('task.edit',$task->id) }}" class="dropdown-item btn btn-sm shadow-0 btn-block" role="button" aria-pressed="true" >
+															<span class="text-info">
+																<i class="fas fa-marker text-info"></i> Edit
+															</span>
+														</a>
+													</li>
+												@endif
+												<li>
+													<a href="{{ route('task.show', $task->id) }}" class="dropdown-item btn btn-sm shadow-0 btn-block" role="button" aria-pressed="true" >
+														<span class="text-success">
+															<i class="fas fa-eye text-success"></i> View
+														</span> 
+													</a>
+												</li>
+												<li>
+													<button data-url="{{ route('task.destroy',$task->id) }}" class="dropdown-item btn btn-sm deleteRequest--btn">
+														<span data-url="{{ route('task.destroy',$task->id) }}" class="text-danger">
+															<i data-url="{{ route('task.destroy',$task->id) }}" class="fas fa-trash"></i> Delete
+														</span>
+													</button>
+												</li>
+											</ul>
 										</div>
 									</div>
 								</div>
-
-							@endforeach
+								<div class="actions-drop-header">
+									<div class="row g-0">
+										@if($task->status != 'missing' )
+											<div class="col">
+												<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm shadow-0 btn-block p-3 rounded-0" role="button" aria-pressed="true" >
+													<span class="text-info">
+														<i class="fas fa-marker text-info"></i> Edit
+													</span>
+												</a>
+											</div>
+										@endif
+										<div class="col">
+											<a href="{{ route('task.show', $task->id) }}" class="btn btn-sm shadow-0 btn-block p-3 rounded-0" role="button" aria-pressed="true" >
+												<span class="text-success">
+													<i class="fas fa-eye text-success"></i> View
+												</span>
+											</a>
+										</div>
+										<div class="col">
+											<button data-url="{{ route('task.destroy',$task->id) }}" class="btn btn-sm shadow-0 deleteRequest--btn btn-block p-3 rounded-0">
+												<span data-url="{{ route('task.destroy',$task->id) }}" class="text-danger">
+													<i data-url="{{ route('task.destroy',$task->id) }}" class="fas fa-trash"></i> Delete
+												</span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
+				@endforeach
 			</div>
 		@endif
 	</div>

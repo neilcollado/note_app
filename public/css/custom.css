@@ -25,6 +25,7 @@ img {
     display: none;
 }
 
+/* GENERAL */
 @media (max-width: 990px) {
     .mdb-page-content {
         padding-left: 0px;
@@ -47,6 +48,30 @@ img {
     }
     .profile-hover {
         margin-top: 1000px;
+    }
+}
+
+/* TASK */
+@media (max-width: 760px) {
+    .actions-dropdown {
+        display: none;
+    }
+    .actions-drop-header {
+        display: block;
+    }
+    .due-date-card {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .task-header-title {
+        text-align: center;
+    }
+}
+
+@media (min-width: 760px) {
+    .actions-drop-header {
+        display: none;
     }
 }
 

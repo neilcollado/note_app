@@ -37,13 +37,13 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="sidenav-item">
-                                <a href="{{ route('login') }}" class="sidenav-link"> <i class="fas fa-sign-in-alt" style="padding-right: 15px;"></i>Log in</a>
+                                <a href="{{ route('login') }}" class="sidenav-link"> <i class="fas fa-lg fa-sign-in-alt text-dark" style="padding-right: 15px;"></i>Log in</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="sidenav-item">
-                                <a href="{{ route('register') }}" class="sidenav-link"> <i class="fas fa-pen-square" style="padding-right: 15px;"></i>Register</a>
+                                <a href="{{ route('register') }}" class="sidenav-link"> <i class="fas fa-lg fa-pen-square text-dark" style="padding-right: 15px;"></i>Register</a>
                             </li>
                         @endif
                     @else
@@ -60,17 +60,17 @@
                             </a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="/task/create" class="sidenav-link"> <i class="fas fa-plus" style="padding-right: 15px;"></i>Create Task</a>
+                            <a href="/task/create" class="sidenav-link"> <i class="fas fa-lg fa-plus text-dark" style="padding-right: 15px;"></i>Create Task</a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="/task/complete" class="sidenav-link"> <i class="fas fa-calendar-check" style="padding-right: 15px;"></i>Completed Tasks</a>
+                            <a href="/task/complete" class="sidenav-link"> <i class="fas fa-lg fa-calendar-check text-dark" style="padding-right: 15px;"></i>Completed Tasks</a>
                         </li> 
                         <li class="sidenav-item">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" 
                                 class="sidenav-link"> 
-                                <i class="fas fa-sign-out-alt" style="padding-right: 15px;"></i>Log out</a>
+                                <i class="fas fa-lg fa-sign-out-alt text-dark" style="padding-right: 15px;"></i>Log out</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
