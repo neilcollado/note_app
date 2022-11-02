@@ -28,8 +28,8 @@
     <div id="app">
         <div class="container">
             <!-- Sidenav -->
-            <nav id="sidenav-1" class="sidenav" data-mdb-hidden="false" data-mode="side">
-                <a href="/" class="ripple d-flex justify-content-center py-4 mb-3" style="border-bottom: 2px solid #f5f5f5" href="#!" data-mdb-ripple-color="primary">
+            <nav id="sidenav-1" class="sidenav" data-mdb-hidden="false" data-mode="side" style="background-color: #C6D1E7;">
+                <a href="/" class="ripple d-flex justify-content-center py-4 mb-3" style="border-bottom: 2px solid #3D5584" href="#!" data-mdb-ripple-color="primary">
                     <img id="MDB-logo" src="/images/logo.png" alt="Note App" draggable="true"/>
                 </a>
                 
@@ -37,19 +37,19 @@
                     @guest
                         @if (Route::has('login'))
                             <li class="sidenav-item">
-                                <a href="{{ route('login') }}" class="sidenav-link"> <i class="fas text-dark fa-lg fa-sign-in-alt" style="padding-right: 15px;"></i>Log in</a>
+                                <a href="{{ route('login') }}" class="sidenav-link"> <i class="fas fa-lg fa-sign-in-alt" style="padding-right: 15px; color: #3D5584"></i>Log in</a>
                             </li>
                         @endif
 
                         @if (Route::has('register'))
                             <li class="sidenav-item">
-                                <a href="{{ route('register') }}" class="sidenav-link"> <i class="fas text-dark fa-lg fa-pen-square" style="padding-right: 15px;"></i>Register</a>
+                                <a href="{{ route('register') }}" class="sidenav-link"> <i class="fas fa-lg fa-pen-square" style="padding-right: 15px; color: #3D5584"></i>Register</a>
                             </li>
                         @endif
                     @else
                         <li class="sidenav-item">
                             <a href="{{ route('users.profile') }}" class="sidenav-link"> 
-                                <i style="padding-right: 15px;">
+                                <i style="padding-right: 15px; color: #3D5584">
                                     @if(isset(Auth::user()->profile_picture))
                                         <img src="{{ asset('uploads/users/' . Auth::user()->profile_picture) }}" alt="avatar"  class="rounded-circle img-fluid" style="width:35px; height:35px; object-fit:cover"/>
                                     @else
@@ -60,20 +60,20 @@
                             </a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="/" class="sidenav-link"> <i class="fas text-dark fa-lg fa-home" style="padding-right: 15px;"></i>Dashboard</a>
+                            <a href="/" class="sidenav-link"> <i class="fas fa-lg fa-home" style="padding-right: 15px; color: #3D5584"></i>Dashboard</a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="/task/create" class="sidenav-link"> <i class="fas text-dark fa-lg fa-plus" style="padding-right: 15px;"></i>Create Task</a>
+                            <a href="/task/create" class="sidenav-link"> <i class="fas fa-lg fa-plus" style="padding-right: 15px; color: #3D5584"></i>Create Task</a>
                         </li>
                         <li class="sidenav-item">
-                            <a href="/task/complete" class="sidenav-link"> <i class="fas text-dark fa-lg fa-calendar-check" style="padding-right: 15px;"></i>Completed Tasks</a>
+                            <a href="/task/complete" class="sidenav-link"> <i class="fas fa-lg fa-calendar-check" style="padding-right: 15px; color: #3D5584"></i>Completed Tasks</a>
                         </li> 
                         <li class="sidenav-item">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" 
                                 class="sidenav-link"> 
-                                <i class="fas text-dark fa-lg fa-sign-out-alt" style="padding-right: 15px;"></i>Log out</a>
+                                <i class="fas fa-lg fa-sign-out-alt" style="padding-right: 15px; color: #3D5584"></i>Log out</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

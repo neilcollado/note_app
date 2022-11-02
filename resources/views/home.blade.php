@@ -47,7 +47,7 @@
 					@if($task->status == 'missing' )
 						<div class="card rounded-0 border border-2 border-danger border-bottom-0 border-start-0 border-end-0 shadow-0 mb-2">
 					@else
-						<div class="card rounded-0 border border-2 border-dark border-bottom-0 border-start-0 border-end-0 shadow-0 mb-2">
+						<div class="card rounded-0 border border-2 border-primary border-bottom-0 border-start-0 border-end-0 shadow-0 mb-2">
 					@endif
 						<div class="row g-0">
 							<div class="col-md-3" style="background-color: #DCE4F4;">
@@ -82,7 +82,7 @@
 							</div>
 							<div class="col-sm pt-3 actions-dropdown">
 								@if($task->status != 'missing' )
-									<p class="text-starts text-success text-uppercase fw-normal" style="padding-top: 3px;">{{ $task->status }}</p>
+									<p class="text-starts text-primary text-uppercase fw-normal" style="padding-top: 3px;">{{ $task->status }}</p>
 								@else
 									<p class="text-starts text-danger text-uppercase fw-normal" style="padding-top: 3px;">{{ $task->status }}</p>
 								@endif
@@ -95,6 +95,13 @@
 												<i class="fas fa-lg fa-ellipsis-v"></i>
 											</button>
 											<ul class="dropdown-menu dropdown-menu-end">
+												<li>
+													<a href="{{ route('task.show', $task->id) }}" class="dropdown-item btn btn-sm shadow-0 btn-block" role="button" aria-pressed="true" >
+														<span class="text-success">
+															<i class="fas fa-eye text-success"></i> View
+														</span> 
+													</a>
+												</li>
 												@if($task->status != 'missing' )
 													<li>
 														<a href="{{ route('task.edit',$task->id) }}" class="dropdown-item btn btn-sm shadow-0 btn-block" role="button" aria-pressed="true" >
@@ -104,13 +111,6 @@
 														</a>
 													</li>
 												@endif
-												<li>
-													<a href="{{ route('task.show', $task->id) }}" class="dropdown-item btn btn-sm shadow-0 btn-block" role="button" aria-pressed="true" >
-														<span class="text-success">
-															<i class="fas fa-eye text-success"></i> View
-														</span> 
-													</a>
-												</li>
 												<li>
 													<button data-url="{{ route('task.destroy',$task->id) }}" class="dropdown-item btn btn-sm deleteRequest--btn">
 														<span data-url="{{ route('task.destroy',$task->id) }}" class="text-danger">
@@ -124,6 +124,13 @@
 								</div>
 								<div class="actions-drop-header">
 									<div class="row g-0">
+										<div class="col">
+											<a href="{{ route('task.show', $task->id) }}" class="btn btn-sm shadow-0 btn-block p-3 rounded-0" role="button" aria-pressed="true" >
+												<span class="text-success">
+													<i class="fas fa-eye text-success"></i> View
+												</span>
+											</a>
+										</div>
 										@if($task->status != 'missing' )
 											<div class="col">
 												<a href="{{ route('task.edit',$task->id) }}" class="btn btn-sm shadow-0 btn-block p-3 rounded-0" role="button" aria-pressed="true" >
@@ -133,13 +140,6 @@
 												</a>
 											</div>
 										@endif
-										<div class="col">
-											<a href="{{ route('task.show', $task->id) }}" class="btn btn-sm shadow-0 btn-block p-3 rounded-0" role="button" aria-pressed="true" >
-												<span class="text-success">
-													<i class="fas fa-eye text-success"></i> View
-												</span>
-											</a>
-										</div>
 										<div class="col">
 											<button data-url="{{ route('task.destroy',$task->id) }}" class="btn btn-sm shadow-0 deleteRequest--btn btn-block p-3 rounded-0">
 												<span data-url="{{ route('task.destroy',$task->id) }}" class="text-danger">

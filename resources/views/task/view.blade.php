@@ -53,7 +53,7 @@
                 </dl>
             </div>
             <div class="card-footer">
-              <a href="{{ url()->previous() }}" class="btn btn-sm btn-block float-end text-white" style="background-color: #E57373;">Return</a>
+              <a href="/" class="btn btn-sm btn-block float-end text-white" style="background-color: #E57373;">Return</a>
             </div>
           </div> 
         </div>
