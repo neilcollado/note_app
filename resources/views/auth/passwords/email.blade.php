@@ -35,13 +35,13 @@
                                     </div>
                                 </div>
         
-                                <div class="row mb-0">
-                                    <div class="col mb-2">
-                                        <button type="submit" class="btn btn-block btn-success">
+                                <div class="row">
+                                    <div class="col-sm mb-2">
+                                        <button type="submit" class="btn btn-block btn-success text-truncate">
                                             {{ __('Send Password Reset Link') }}
                                         </button>
                                     </div>
-                                    <div class="col mb-2">
+                                    <div class="col-sm mb-2">
                                         <a href="{{ url('/') }}" type="submit" class="btn btn-block btn-danger">
                                             {{ __('Home') }}
                                         </a>

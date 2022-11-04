@@ -36,7 +36,7 @@
     <div class="container p-4">
         <!-- First Name -->
         <div class="row mb-3">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-outline">
                     <i class="fas fa-user-tag trailing"></i>
                     <input type="text" id="first_name" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="@isset($user){{$user->first_name}}@endisset" required autocomplete="first_name" />
@@ -48,11 +48,7 @@
                     @enderror
                 </div>
             </div>
-        </div>
-        
-        <!-- Last Name -->
-        <div class="row mb-3">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-outline">
                     <i class="fas fa-user-tag trailing"></i>
                     <input type="text" id="last_name" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="@isset($user){{$user->last_name}}@endisset" required autocomplete="last_name" />

@@ -75,16 +75,17 @@
         
                                     <div class="row mb-4">
                                         <div class="col d-flex justify-content-center">
+                                            <!-- Checkbox -->
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
                                                 <label class="form-check-label" for="remember">Remember me</label>
                                             </div>
                                         </div>
-                                    
+
                                         <div class="col">
                                             @if (Route::has('password.request'))
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                    {{ __('Forgot Your Password?') }}
+                                                <a href="{{ route('password.request') }}">
+                                                    Forgot Your password?
                                                 </a>
                                             @endif
                                         </div>

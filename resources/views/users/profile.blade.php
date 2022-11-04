@@ -36,7 +36,7 @@
                     </div>
                   </div>
                   <div class="mt-2 mb-2">
-                    <a href="{{ url('/') }}" class="btn btn-block btn-danger"> Home</a>
+                    <a href="{{ url('/') }}" class="btn btn-block btn-danger">Home</a>
                   </div>
                 </div>
               </div>
