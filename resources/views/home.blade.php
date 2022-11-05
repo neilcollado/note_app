@@ -6,30 +6,28 @@
 <div class="mdb-page-content page-intro">
 	<div class="px-3 py-5">
 		{{-- Dashboard Header --}}
-		<div class="">
-			<p class="h2 pt-4 pb-0">Dashboard</p>
-			<div class="row">
-				<div class="col-md-6">
-					<p class="fs-6 pt-0">Welcome <strong>{{ Auth::user()->first_name }}</strong>!</p>
-				</div>
-				<div class="col">
-					<div class="row">
-						<div class="col">
-							<button
-								data-url="{{ route('task.edit.bulk') }}"
-								class="btn btn-sm btn-block btn-info mx-1 mb-2 float-end editRequest--bulk text-truncate
-								" style="display: none;">
-								Edit Status / Priority Selected
-							</button>
-						</div>
-						<div class="col">
-							<button
-								data-url="{{ route('task.destroy.bulk') }}"
-								class="btn btn-sm btn-block btn-danger mx-1 mb-2 float-end deleteRequest--bulk text-truncate
-								" style="display: none;">
-								Delete Selected
-							</button>
-						</div>
+		<p class="h2 pt-4 pb-0">Dashboard</p>
+		<div class="row">
+			<div class="col-md-7">
+				<p class="fs-6 pt-0">Welcome <strong>{{ Auth::user()->first_name }}</strong>!</p>
+			</div>
+			<div class="col-md-5">
+				<div class="row">
+					<div class="col-md-7">
+						<button
+							data-url="{{ route('task.edit.bulk') }}"
+							class="btn btn-sm btn-block btn-info mb-2 editRequest--bulk text-truncate
+							" style="display: none;">
+							Edit Status / Priority Selected
+						</button>
+					</div>
+					<div class="col-md-5">
+						<button
+							data-url="{{ route('task.destroy.bulk') }}"
+							class="btn btn-sm btn-block btn-danger mb-2 deleteRequest--bulk text-truncate
+							" style="display: none;">
+							Delete Selected
+						</button>
 					</div>
 				</div>
 			</div>
