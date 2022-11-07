@@ -18,7 +18,7 @@
                       <table class="table table-hover table-sm">
                         <tbody>
                           <tr>
-                            <th class="text-end" scope="row">Priority Number</th>
+                            <th class="text-end" scope="row">Priority Level</th>
                             <td class="text-start"><span class="text-success text-capitalize"> <span>{{ $task->priority }}</span> </span></td>
                           </tr>
                           <tr>
@@ -39,13 +39,17 @@
                           </tr>
                           <tr>
                             <th class="text-end" scope="row">Sub Tasks</th>
-                            <td class="text-start"><span class="text-success"> <span>
-                              <ol class="list-group list-group-light list-group-numbered">
+                            @if ($task->items->isEmpty())
+                              <td class="text-start"><span class="text-danger"> <span>No subtasks</span> </span></td>
+                            @else
+                              <td class="text-start"><span class="text-success"> <span>
+                                <ol class="list-group list-group-light list-group-numbered">
                                   @foreach ($task->items as $key => $item)
                                     <li class="list-group-item border-0 bg-transparent p-0">{{ $item->title }}</li>
                                   @endforeach
-                              </ol>
-                            </span> </span></td>
+                                </ol>
+                              </span> </span></td>
+                            @endif
                           </tr>
                         </tbody>
                       </table>

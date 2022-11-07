@@ -84,7 +84,7 @@
                 <!-- Sidenav -->
 
                 {{-- Navbar --}}
-                @include('layouts.navbar')
+                {{-- @include('layouts.navbar') --}}
                 @endguest
             </div>
 
