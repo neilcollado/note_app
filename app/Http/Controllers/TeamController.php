@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Member;
 use App\Models\Team;
+use App\Models\TeamTask;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class TeamController extends Controller
         $teams = [];
         // get all the team this user is a member of.
         $result = Member::where('user_id', Auth::id())->get();
-    
+        
         foreach($result as $r) {
             $team = Team::find($r->team_id);
             array_push($teams, $team);
@@ -76,8 +77,9 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        $isOwner = $team->owner_id == Auth::id() ? 1 : 0;
+
         // get team members
+        $isOwner = $team->owner_id == Auth::id() ? 1 : 0;
         $members = [];
         $team_members = Member::where('team_id', $team->id)->get();
         foreach($team_members as $m) {
@@ -87,8 +89,21 @@ class TeamController extends Controller
             array_push($members, $temp);
         }
 
-        // get all boards
-        return view('teams.show')->with(['team' => $team, 'isOwner' => $isOwner, 'members' => $members]);
+        // get all team tasks
+        $teamtasks = TeamTask::where('team_id', $team->id)->get()->toArray();
+
+        // separate each task by status
+        $notstarted = array_filter($teamtasks, function($item) {
+            return $item['status'] == 'notstarted';
+        });
+        $inprogress = array_filter($teamtasks, function($item) {
+            return $item['status'] == 'inprogress';
+        });
+        $completed = array_filter($teamtasks, function($item) {
+            return $item['status'] == 'completed';
+        });
+
+        return view('teams.show')->with(compact('team','isOwner','members','notstarted','inprogress','completed'));
     }
 
     /**
@@ -123,8 +138,10 @@ class TeamController extends Controller
     public function destroy(Team $team)
     {
         $team->members()->delete();
+        $team->teamtasks()->delete();
         $team->delete();
         return redirect('/teams');
-        // TODO -> Destroy all boards and task aswell
+        
     }
+
 }

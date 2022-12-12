@@ -155,3 +155,63 @@ input[type="file"] {
     background: #30cfd0;
     background: linear-gradient(to right, rgba(48, 207, 208), rgba(51, 8, 103));
 }
+
+/* Team Tasks */
+#teamtask-wrapper {
+    margin: 0 auto;
+    width: 75%;
+    background: orange;
+    display: flex;
+    gap: 10px;
+    min-height: 606px;
+    margin-top: 3em;
+}
+
+#teamtask-wrapper main {
+    width: 75%;
+    background: red;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+#teamtask-wrapper aside {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2em;
+}
+
+#status-divider {
+    background: blue;
+    display: flex;
+    justify-content: space-between;
+}
+
+#status-divider .box {
+    width: 31%;
+    background: lime;
+    min-height: 500px;
+    padding: 0.8em;
+}
+
+#status-divider .box h4 {
+    text-align: center;
+}
+
+.teamtask {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: pink;
+    padding: 1em;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+#new-task {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1em;
+}

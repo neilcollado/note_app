@@ -15,4 +15,9 @@ class Team extends Model
     {
         return $this->hasMany(Member::class);
     }
+
+    public function teamtasks()
+    {
+        return $this->hasMany(TeamTask::class);
+    }
 }

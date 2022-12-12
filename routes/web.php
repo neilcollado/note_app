@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\taskController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TeamTaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::middleware('auth')->group(function(){
   // collab
   Route::resource('/teams', TeamController::class);
   Route::resource('/members', MemberController::class);
+  Route::resource('/teamtasks', TeamTaskController::class);
 
 });
 
