@@ -28,15 +28,14 @@
                 @if(Session::has('msg'))
                   <p class="text-success mb-0">{{ session('msg') }}</p>
                 @endif
-                
                 <div class="container p-0">
                   <div class="row">
                     <div class="col-sm mt-2">
-                        <button class="btn btn-primary btn-block">Create</button>
+                      <button class="btn btn-primary btn-block">Create</button>
                       </div>
-                      <div class="col-sm mt-2">
-                          <a href="/teams" class="btn btn-block btn-danger">{{ __('Cancel') }}</a>
-                      </div>
+                    <div class="col-sm mt-2">
+                      <a href="{{ route('teams.show', $_GET['team_id']) }}" class="btn btn-block btn-danger">{{ __('Cancel') }}</a>
+                    </div>
                   </div>
                 </div>
               </form>

@@ -65,7 +65,7 @@
 											<button class="btn btn-primary btn-block">Submit</button>
 										</div>
 										<div class="col-sm mt-2">
-											<a href="{{ route('teams.index') }}" class="btn btn-block btn-danger">{{ __('Cancel') }}</a>
+											<a href="{{ route('teams.show', $_GET['team_id']) }}" class="btn btn-block btn-danger">{{ __('Cancel') }}</a>
 										</div>
 									</div>
 								</div>
