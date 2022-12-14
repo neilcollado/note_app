@@ -39,39 +39,42 @@
 									</span></span></td>
 								</tr>
 							@endforeach
+								<tr>
+									<td colspan="3">
+										<div>
+											<form method="POST" action="{{ route('members.store', $_SERVER['QUERY_STRING']); }}">
+												@csrf
+												<div class="row">
+													<div class="col-sm-8">
+
+														<div class="form-outline my-1">
+															<input type="email" id="email" name="email" class="form-control"/>
+															<label class="form-label" for="email">Add Member's Email Address</label>
+														</div>
+														
+													</div>
+													<div class="col-sm-4">
+														<button class="btn btn-secondary btn-block my-1">Add</button>
+													</div>
+
+												</div>
+												@if(Session::has('errors'))
+													@foreach ($errors as $err)
+														<div class="alert alert-danger p-3 mt-3 mb-2" role="alert" data-mdb-color="danger">
+															<i class="fas fa-times-circle me-3"></i>{{ $err }}
+														</div>
+													@endforeach
+												@endif
+											</form>
+										</div>
+									</td>
+								</tr>
 							</tbody>
 						</table>
 					</section>
 
-					<h5 class="bg-light p-2 border-top text-center border-bottom p-0">Add a member</h5>
-					<div class="card-body text-center p-6">
-						<div>
-							<form method="POST" action="{{ route('members.store', $_SERVER['QUERY_STRING']); }}">
-								@csrf
-								<div class="form-outline mb-2">
-									<input type="email" id="email" name="email" class="form-control"/>
-									<label class="form-label" for="email">Member's Email Address</label>
-								</div>
-								
-								@if(Session::has('errors'))
-									@foreach ($errors as $err) 
-										<p class="text-danger">{{ $err }}</p>
-									@endforeach
-								@endif
-
-								<div class="container p-0">
-									<div class="row">
-										<div class="col-sm mt-2">
-											<button class="btn btn-primary btn-block">Submit</button>
-										</div>
-										<div class="col-sm mt-2">
-											<a href="{{ route('teams.show', $_GET['team_id']) }}" class="btn btn-block btn-danger">{{ __('Cancel') }}</a>
-										</div>
-									</div>
-								</div>
-								
-							</form>
-						</div>
+					<div class="card-body text-center px-6 pt-2">
+						<a href="{{ route('teams.show', $_GET['team_id']) }}" class="btn btn-block btn-danger">{{ __('Return') }}</a>
 					</div>
 				</div>
 			</div>

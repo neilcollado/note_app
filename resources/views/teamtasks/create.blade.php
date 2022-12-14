@@ -21,12 +21,16 @@
           
                 @if(Session::has('errors'))
                   @foreach ($errors as $err) 
-                    <p class="text-danger mb-0">{{ $err }}</p>
+                    <div class="alert alert-danger mt-3 mb-2" role="alert" data-mdb-color="danger">
+                      <i class="fas fa-times-circle me-3"></i>{{ $err }}
+                    </div>
                   @endforeach
                 @endif
           
                 @if(Session::has('msg'))
-                  <p class="text-success mb-0">{{ session('msg') }}</p>
+                  <div class="alert alert-success mt-3 mb-2" role="alert" data-mdb-color="success">
+                    <i class="fas fa-check-circle me-3"></i>{{ session('msg') }}
+                  </div>
                 @endif
                 <div class="container p-0">
                   <div class="row">
@@ -34,7 +38,7 @@
                       <button class="btn btn-primary btn-block">Create</button>
                       </div>
                     <div class="col-sm mt-2">
-                      <a href="{{ route('teams.show', $_GET['team_id']) }}" class="btn btn-block btn-danger">{{ __('Cancel') }}</a>
+                      <a href="{{ route('teams.show', $_GET['team_id']) }}" class="btn btn-block btn-danger">{{ __('Return') }}</a>
                     </div>
                   </div>
                 </div>
