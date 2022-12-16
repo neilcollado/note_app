@@ -10,7 +10,7 @@
         <div class="col-lg-6">
           <div class="card mb-4">
             <div class="color-custom-team"></div>
-            <h2 class="bg-light p-2 border-top text-center border-bottom mb-3">View Team Task</h2>
+            <h2 class="bg-light p-2 border-top text-center border-bottom mb-3">Manage Team Task</h2>
 
             {{-- <p>{{$teamtask}}</p> --}}
             <section class="table-responsive-sm mt-0 pt-0">
