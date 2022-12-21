@@ -69,6 +69,9 @@
                             <a href="/task/complete" class="sidenav-link"> <i class="fas fa-lg fa-calendar-check" style="padding-right: 15px; color: #3D5584"></i>Completed Tasks</a>
                         </li> 
                         <li class="sidenav-item">
+                            <a href="/teams/" class="sidenav-link"> <i class="fas fad fa-users" style="padding-right: 15px; color: #3D5584"></i>Teams</a>
+                        </li> 
+                        <li class="sidenav-item">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" 
